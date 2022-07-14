@@ -12,6 +12,7 @@
         <module>ocean-dependencies</module>
         <module>ocean-apps</module>
         <module>ocean-tools</module>
+        <module>ocean-dap</module>
     </modules>
 
     <properties>
