@@ -13,6 +13,7 @@
         <module>ocean-apps</module>
         <module>ocean-tools</module>
         <module>ocean-dap</module>
+        <module>ocean-ddd</module>
     </modules>
 
     <properties>
