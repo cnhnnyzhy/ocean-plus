@@ -35,13 +35,18 @@ public class SummaryOfLoanSuspensionParse {
     private static final String JSON_FILE_PATH = "/Users/ocean/Documents/temp/tingdai/全国各省市烂尾楼停贷通知汇总.json";
 
 
-    private static List<String> NOT_STOP_TIME_PROJECTS = Lists.newArrayList("君悦花园（知音湖院子）", "奥园悦城（汇景园）");
+    private static List<String> NOT_STOP_TIME_PROJECTS = Lists.newArrayList(
+            "君悦花园（知音湖院子）",
+            "奥园悦城（汇景园）",
+            "禹洲朗廷湾（朗廷雅苑）");
 
     private static final Map<String, List<String>> SPECIFIC_PROJECTS = new HashMap<String, List<String>>() {
         {
             put("恒大童世界四号地（廊桥水乡）（9月）", Lists.newArrayList("恒大童世界四号地（廊桥水乡）", "9月"));
             put("恒大书香门第15", Lists.newArrayList("恒大书香门第15、16栋", ""));
             put("16栋", null);
+            put("融创融公馆11", Lists.newArrayList("融创融公馆11，12号楼", "8月"));
+            put("12号楼", null);
         }
 
     };
@@ -49,7 +54,15 @@ public class SummaryOfLoanSuspensionParse {
 
     public static void main(String[] args) throws IOException {
         String url = "https://github.com/WeNeedHome/SummaryOfLoanSuspension/blob/main/README.md";
-        saveResult(filterExistingData(parse(url)));
+        System.out.println("请输入要执行的命令：1-增量 2-全量");
+        Scanner scanner = new Scanner(System.in);
+        int cmd = scanner.nextInt();
+        if (cmd == 2) {
+            generateAllData();
+        } else {
+            saveResult(filterExistingData(parse(url)));
+        }
+        System.out.println("命令执行完成.....");
     }
 
     private static String getContent(String url) {
@@ -150,11 +163,19 @@ public class SummaryOfLoanSuspensionParse {
     }
 
     private static Set<String> getExistingData() {
+        Set<String> set = new HashSet<>();
+        Optional.ofNullable(getProjectInfoList()).ifPresent(projectInfoList -> {
+            projectInfoList.forEach(projectInfo -> set.add(buildUniqueKey(projectInfo)));
+        });
+        return set;
+    }
+
+    private static List<ProjectInfo> getProjectInfoList() {
         File file = new File(JSON_FILE_PATH);
         if (!file.exists()) {
             return null;
         }
-        Set<String> set = new HashSet<>();
+        List<ProjectInfo> list = new ArrayList<>();
         FileUtil.readUtf8Lines(file).forEach(line -> {
             if (StringUtils.isBlank(line)) {
                 return;
@@ -164,28 +185,41 @@ public class SummaryOfLoanSuspensionParse {
             if (projectInfo == null) {
                 return;
             }
-            set.add(buildUniqueKey(projectInfo));
+            list.add(projectInfo);
         });
-        return set;
+        return list;
     }
 
     private static void saveResult(List<ProjectInfo> projectInfoList) throws IOException {
+        generateExcel(projectInfoList);
         File file = new File(JSON_FILE_PATH);
         if (!file.exists()) {
             file.createNewFile();
         }
         List<String> lines = new ArrayList<>();
+        projectInfoList.forEach(project -> {
+            lines.add(JSON.toJSONString(project));
+        });
+        FileUtil.appendUtf8Lines(lines, file);
+    }
+
+    private static void generateExcel(List<ProjectInfo> projectInfoList) {
         ExcelWriter writer = ExcelUtil.getWriter("/Users/ocean/Documents/temp/tingdai/全国各省市烂尾楼停贷通知汇总" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss")) + ".xlsx");
         writer.writeHeadRow(Lists.newArrayList("省份", "城市", "项目名称", "通知日期", "停贷时间"));
         projectInfoList.forEach(project -> {
             writer.writeRow(Lists.newArrayList(project.getProvince(), project.getCity(), project.getName(), project.getNoticeDate(), project.getExecuteDate()));
-            lines.add(JSON.toJSONString(project));
         });
         writer.flush();
-        FileUtil.appendUtf8Lines(lines, file);
     }
 
     private static String[] notTargetData() {
         return new String[]{"其他数据公示处", "SummaryOfLoanSuspension/README.md", "Footer"};
+    }
+
+    /**
+     * 从json文件中生成全量数据
+     */
+    private static void generateAllData() {
+        generateExcel(getProjectInfoList());
     }
 }
