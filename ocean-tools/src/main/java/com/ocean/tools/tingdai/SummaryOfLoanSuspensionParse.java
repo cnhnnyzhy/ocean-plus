@@ -89,7 +89,9 @@ public class SummaryOfLoanSuspensionParse {
             for (Element li : liElements) {
                 String[] liText = StringUtils.replaceEach(li.text(), new String[]{" ", "：", "，", LEFT_BRACKET_EN, RIGHT_BRACKET_EN}, new String[]{"", ":", ",", LEFT_BRACKET_ZH, RIGHT_BRACKET_ZH}).split(":");
                 String city = StringUtils.substringBefore(liText[0], LEFT_BRACKET_ZH);
-
+                if (liText.length < 2) {
+                    continue;
+                }
                 String[] projects = liText[1].split(",");
                 List<ProjectInfo> projectList = Optional.ofNullable(cityMap.get(city)).orElse(new ArrayList<>(32));
                 Set<String> projectSet = new HashSet<>();
