@@ -16,6 +16,10 @@
         <module>ocean-ddd</module>
         <module>ocean-common</module>
         <module>ocean-generator</module>
+        <module>ocean-auth</module>
+        <module>ocean-basic</module>
+        <module>ocean-web</module>
+        <module>ocean-client</module>
     </modules>
 
     <properties>
@@ -24,6 +28,8 @@
         <spring.cloud-version>2021.0.4</spring.cloud-version>
         <spring.boot-version>2.7.4</spring.boot-version>
         <hutool.version>5.7.17</hutool.version>
+        <spring-cloud-alibaba.version>2021.0.1.0</spring-cloud-alibaba.version>
+        <ocean.version>>1.0-SNAPSHOT</ocean.version>
     </properties>
 
     <dependencyManagement>
@@ -43,6 +49,55 @@
                 <scope>import</scope>
             </dependency>
             <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-freemarker</artifactId>
+                <version>2.7.4</version>
+            </dependency>
+            <!--注册中心客户端-->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
+            </dependency>
+            <!--配置中心客户端-->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
+            </dependency>
+            <!-- Ocean 模块-->
+            <dependency>
+                <groupId>com.ocean</groupId>
+                <artifactId>ocean-basic</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ocean</groupId>
+                <artifactId>ocean-common-core</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ocean</groupId>
+                <artifactId>ocean-common-security</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ocean</groupId>
+                <artifactId>ocean-web</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ocean</groupId>
+                <artifactId>ocean-client</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ocean</groupId>
+                <artifactId>ocean-admin-api</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>
                 <version>${hutool.version}</version>
@@ -61,6 +116,31 @@
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>3.5.2</version>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>8.0.30</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct</artifactId>
+                <version>1.4.2.Final</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok-mapstruct-binding</artifactId>
+                <version>0.2.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-extension</artifactId>
+                <version>3.5.2</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>transmittable-thread-local</artifactId>
+                <version>2.12.6</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
