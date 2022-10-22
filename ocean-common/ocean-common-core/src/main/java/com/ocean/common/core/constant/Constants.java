@@ -7,5 +7,8 @@ package com.ocean.common.core.constant;
  * @date 2022/10/16
  */
 public interface Constants {
-    String prefix = "ocean_";
+    /**
+     * 编码
+     */
+    String UTF8 = "UTF-8";
 }
