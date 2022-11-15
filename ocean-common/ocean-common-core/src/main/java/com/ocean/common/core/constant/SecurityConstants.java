@@ -16,4 +16,14 @@ public interface SecurityConstants {
      * 内部
      */
     String FROM_IN = "Y";
+
+    /**
+     * 角色前缀
+     */
+    String ROLE = "ROLE_";
+
+    /**
+     * {bcrypt} 加密的特征码
+     */
+    String BCRYPT = "{bcrypt}";
 }

@@ -12,6 +12,8 @@ import org.springframework.context.ApplicationEvent;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
+import java.util.Map;
+
 /**
  * Spring上下文容器Holder
  *
@@ -50,6 +52,13 @@ public class SpringContextHolder implements BeanFactoryPostProcessor, Applicatio
 
     public static <T> T getBean(Class<?> type) {
         return (T) getBeanFactory().getBean(type);
+    }
+
+    /**
+     * 从静态变量applicationContext中取得Bean, Map<Bean名称，实现类></>
+     */
+    public static <T> Map<String, T> getBeansOfType(Class<T> type) {
+        return getBeanFactory().getBeansOfType(type);
     }
 
     private static void clearHolder() {
