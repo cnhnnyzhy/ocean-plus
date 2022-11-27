@@ -80,6 +80,11 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Bean
     public CustomTokenServices tokenServices() {
         CustomTokenServices tokenServices = new CustomTokenServices();
+        tokenServices.setTokenStore(redisTokenStore);
+        tokenServices.setSupportRefreshToken(true);
+        tokenServices.setReuseRefreshToken(false);
+        tokenServices.setClientDetailsService(clientDetailsService);
+        tokenServices.setTokenEnhancer(tokenEnhancer);
         return tokenServices;
     }
 }

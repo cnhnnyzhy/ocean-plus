@@ -16,7 +16,7 @@ import java.util.List;
  * @author ocean
  * @date 2022/10/15
  */
-@FeignClient(contextId = "tenantRemoteClient", value = ServiceNameConstant.ADMIN_SERVICE, path = "/system/tenant")
+@FeignClient(contextId = "tenantRemoteClient", name = ServiceNameConstant.ADMIN_SERVICE, path = "/system/tenant")
 public interface TenantRemoteClient {
     /**
      * 查询全部有效的租户信息

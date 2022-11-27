@@ -9,8 +9,14 @@ import com.ocean.common.core.cache.CacheKey;
  * @date 2022/10/16
  */
 public interface CacheConstants {
+    /**
+     * 全局缓存，在缓存名称上加上该前缀表示该缓存不区分租户，比如:
+     * <p/>
+     * {@code @Cacheable(value = CacheConstants.GLOBAL_CACHE_PREFIX+CacheConstants.MENU_DETAILS, key = "#roleId  + '_menu'", unless = "#result == null")}
+     */
+    String GLOBAL_CACHE_PREFIX = "gl:";
 
-    String PREFIX = "ocean_";
+    String PREFIX = Constants.PROJECT + "_";
     /**
      * 用户信息缓存
      */

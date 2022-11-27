@@ -14,5 +14,6 @@
     <modules>
         <module>ocean-common-core</module>
         <module>ocean-common-security</module>
+        <module>ocean-common-data</module>
     </modules>
 </project>

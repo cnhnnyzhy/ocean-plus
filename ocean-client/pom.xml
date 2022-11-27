@@ -14,6 +14,10 @@
     <dependencies>
         <dependency>
             <groupId>com.ocean</groupId>
+            <artifactId>ocean-common-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.ocean</groupId>
             <artifactId>ocean-admin-api</artifactId>
         </dependency>
     </dependencies>

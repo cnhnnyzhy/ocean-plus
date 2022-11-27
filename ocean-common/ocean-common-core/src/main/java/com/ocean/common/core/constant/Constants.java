@@ -8,14 +8,34 @@ package com.ocean.common.core.constant;
  */
 public interface Constants {
     /**
+     * 项目名
+     */
+    String PROJECT = "ocean-plus";
+
+    /**
+     * 前端工程名
+     */
+    String FRONT_END_PROJECT = PROJECT + "-ui";
+
+    /**
+     * 移动端工程名
+     */
+    String UNI_END_PROJECT = PROJECT + "-app";
+
+    /**
+     * 后端工程名
+     */
+    String BACK_END_PROJECT = PROJECT;
+
+    /**
      * header 中租户ID
      */
-    String TENANT_ID = "TENANT-ID";
+    String PROPERTY_TENANT_ID = "TENANT-ID";
 
     /**
      * header 中版本信息
      */
-    String VERSION = "VERSION";
+    String PROPERTY_VERSION = "VERSION";
 
     /**
      * 租户ID
@@ -47,20 +67,6 @@ public interface Constants {
      */
     String UTF8 = "UTF-8";
 
-    /**
-     * 前端工程名
-     */
-    String FRONT_END_PROJECT = "pigx-ui";
-
-    /**
-     * 移动端工程名
-     */
-    String UNI_END_PROJECT = "pigx-app";
-
-    /**
-     * 后端工程名
-     */
-    String BACK_END_PROJECT = "pigx";
 
     /**
      * 公共参数
@@ -106,4 +112,9 @@ public interface Constants {
      * 请求开始时间
      */
     String REQUEST_START_TIME = "REQUEST-START-TIME";
+
+    /**
+     * 统一前缀
+     */
+    String PREFIX = Constants.PROJECT + "_";
 }
