@@ -1,6 +1,6 @@
-package com.ocean.admin.api.dto;
+package com.ocean.admin.api.dto.rsp;
 
-import com.ocean.common.core.dto.DTO;
+import com.ocean.common.core.dto.Rsp;
 import lombok.Data;
 
 /**
@@ -10,11 +10,11 @@ import lombok.Data;
  * @date 2022/11/15
  */
 @Data
-public class UserInfo extends DTO {
+public class SysUserInfoRsp extends Rsp {
     /**
      * 用户基本信息
      */
-    private SysUser sysUser;
+    private SysUserRsp sysUser;
     /**
      * 权限标识集合
      */

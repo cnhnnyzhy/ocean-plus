@@ -1,7 +1,13 @@
 package com.ocean.admin.system.controller;
 
+import com.ocean.admin.api.dto.rsp.SysUserInfoRsp;
+import com.ocean.common.core.dto.Result;
+import io.swagger.annotations.Api;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
@@ -11,8 +17,14 @@ import org.springframework.stereotype.Controller;
  * @author ocean
  * @since 2022-10-05
  */
-@Controller
-@RequestMapping("/system/sysUser")
+@RequiredArgsConstructor
+@Api(value = "user", tags = "用户管理")
+@RestController
+@RequestMapping("/system/user")
 public class SysUserController {
 
+    @GetMapping("/info/{username}")
+    public Result<SysUserInfoRsp> info(@PathVariable String username) {
+
+    }
 }

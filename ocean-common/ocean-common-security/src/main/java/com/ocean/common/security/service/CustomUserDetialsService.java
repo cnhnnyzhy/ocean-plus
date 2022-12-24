@@ -1,8 +1,8 @@
 package com.ocean.common.security.service;
 
 import cn.hutool.core.util.ArrayUtil;
-import com.ocean.admin.api.dto.SysUser;
-import com.ocean.admin.api.dto.UserInfo;
+import com.ocean.admin.api.dto.rsp.SysUserInfoRsp;
+import com.ocean.admin.api.dto.rsp.SysUserRsp;
 import com.ocean.common.core.constant.Constants;
 import com.ocean.common.core.constant.SecurityConstants;
 import com.ocean.common.core.dto.Result;
@@ -54,7 +54,7 @@ public interface CustomUserDetialsService extends UserDetailsService, Ordered {
      * @return UserDetails
      * @throws UsernameNotFoundException
      */
-    default UserDetails getUserDetails(Result<UserInfo> result) {
+    default UserDetails getUserDetails(Result<SysUserInfoRsp> result) {
         // @formatter:off
         return ResultOptional.of(result)
                 .getData()
@@ -69,7 +69,7 @@ public interface CustomUserDetialsService extends UserDetailsService, Ordered {
      * @param info
      * @return 返回UserDetails对象
      */
-    default UserDetails convertUserDetails(UserInfo info) {
+    default UserDetails convertUserDetails(SysUserInfoRsp info) {
         Set<String> dbAuthsSet = new HashSet<>();
         if (ArrayUtil.isNotEmpty(info.getRoles())) {
             // 获取角色
@@ -80,7 +80,7 @@ public interface CustomUserDetialsService extends UserDetailsService, Ordered {
         }
         Collection<? extends GrantedAuthority> authorities = AuthorityUtils
                 .createAuthorityList(dbAuthsSet.toArray(new String[0]));
-        SysUser user = info.getSysUser();
+        SysUserRsp user = info.getSysUser();
         // 构造security用户
 
         return new LoginUser(user.getId(), user.getUserName(), user.getDeptId(), user.getMobile(), user.getAvatar(),

@@ -1,6 +1,6 @@
-package com.ocean.admin.api.dto;
+package com.ocean.admin.api.dto.rsp;
 
-import com.ocean.common.core.dto.DTO;
+import com.ocean.common.core.dto.Rsp;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
  * @date 2022/11/15
  */
 @Data
-public class SysUser extends DTO {
+public class SysUserRsp extends Rsp {
     private Long id;
 
     /**
