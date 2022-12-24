@@ -3,59 +3,75 @@ package com.ocean.generator;
 import com.baomidou.mybatisplus.generator.FastAutoGenerator;
 import com.baomidou.mybatisplus.generator.config.OutputFile;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
-import com.baomidou.mybatisplus.generator.function.ConverterFileName;
-import org.jetbrains.annotations.NotNull;
+import com.google.common.collect.Lists;
+import lombok.AllArgsConstructor;
 
 import java.util.Collections;
+import java.util.List;
 
 /**
- * @Description:
- * @Author: yang.zhang
- * @Date: 2022/10/5 00:15
+ * mybatis-plus-generator 代码自动生成
+ * 参考地址：https://baomidou.com/pages/981406/
+ *
+ * @author ocean
+ * @date 2022/4/8
  */
+@AllArgsConstructor
 public class MyBatisPlusGenerator {
-    public static void main(String[] args) {
-        String url = "jdbc:mysql://localhost:3306/ocean_admin?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai";
-        String username = "root";
-        String password = "123456";
-        String dir = "/Users/ocean/Documents/temp/CodeGen/";
-        String projectName = "ocean-admin";
+    private String author;
+    private String rootPath;
+    private String url;
+    private String username;
+    private String password;
+    private String projectName;
+    private String basePackage;
+    private String moduleName;
+    private List<String> tableNames;
+
+    public void generate() {
         FastAutoGenerator.create(url, username, password)
                 .globalConfig(builder -> {
-                    builder.author("ocean") // 设置作者
-//                            .enableSwagger() // 开启 swagger 模式
-                            .fileOverride() // 覆盖已生成文件
-                            .outputDir(dir + "/" + projectName); // 指定输出目录
+                    // 设置作者
+                    builder.author(author)
+                            // 开启 swagger 模式
+//                            .enableSwagger()
+                            // 覆盖已生成文件
+                            .fileOverride()
+                            // 指定输出目录
+                            .outputDir(rootPath + projectName);
                 })
                 .packageConfig(builder -> {
-                    builder.parent("com.ocean.admin") // 设置父包名
-                            .moduleName("system") // 设置父包模块名
-                            .service("repository")
-                            .serviceImpl("repository.impl")
-                            .pathInfo(Collections.singletonMap(OutputFile.xml, dir + "/" + projectName + "/mappers")); // 设置mapperXml生成路径
+                    builder
+                            // 设置父包名
+                            .parent(basePackage)
+                            // 设置父包模块名
+                            .moduleName(moduleName)
+                            // 设置mapperXml生成路径
+                            .pathInfo(Collections.singletonMap(OutputFile.xml, rootPath + projectName + "/mapper"));
                 })
                 .strategyConfig(builder -> {
                     builder
-//                            .addInclude("t_simple") // 设置需要生成的表名
-                            .addTablePrefix("t_", "c_") // 设置过滤表前缀
+                            // 设置需要生成的表名
+                            .addInclude(tableNames.toArray(new String[0]))
+                            // 设置过滤表前缀
+                            .addTablePrefix("t_", "c_", "marketing_")
                             .entityBuilder().enableLombok()
-                            .serviceBuilder().convertServiceFileName(new ConverterFileName() {
-                                @Override
-                                public @NotNull
-                                String convert(String entityName) {
-                                    return entityName + "Repository";
-                                }
-                            })
-                            .convertServiceImplFileName(new ConverterFileName() {
-                                @Override
-                                public @NotNull
-                                String convert(String entityName) {
-                                    return entityName + "RepositoryImpl";
-                                }
-                            });
+                    ;
                 })
-                .templateEngine(new FreemarkerTemplateEngine()) // 使用Freemarker引擎模板，默认的是Velocity引擎模板
+                // 使用Freemarker引擎模板，默认的是Velocity引擎模板
+                .templateEngine(new FreemarkerTemplateEngine())
                 .execute();
-
     }
+
+    public static void main(String[] args) {
+        MyBatisPlusGenerator daoGeneratorUtil = null;
+
+        daoGeneratorUtil = new MyBatisPlusGenerator("yang.zhang", "/Users/ocean/Documents/temp/CodeGen/",
+                "jdbc:mysql://172.20.106.161:3306/vhall_tmp?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8",
+                "qa_user", "5Vftq9BZbmANrHCW",
+                "vhall-csd-form-srv", "com.vhall.csd", "form",
+                Lists.newArrayList("question_survey_answers", "question_survey_answer_items", "question_survey_answer_city"));
+        daoGeneratorUtil.generate();
+    }
+
 }

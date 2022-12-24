@@ -18,6 +18,7 @@
         <module>ocean-ddd</module>
         <module>ocean-generator</module>
         <module>ocean-web</module>
+        <module>ocean-repository</module>
     </modules>
     <dependencies>
         <dependency>

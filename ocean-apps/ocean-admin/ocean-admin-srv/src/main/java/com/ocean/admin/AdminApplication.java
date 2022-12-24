@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Author: yang.zhang
  * @Date: 2022/10/4 22:47
  */
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.ocean")
 public class AdminApplication {
     public static void main(String[] args) {
         SpringApplication.run(AdminApplication.class, args);

@@ -25,6 +25,6 @@ public class SysUserController {
 
     @GetMapping("/info/{username}")
     public Result<SysUserInfoRsp> info(@PathVariable String username) {
-
+        return Result.success(null);
     }
 }

@@ -31,7 +31,7 @@ public @interface MatchOne {
      *
      * @see org.hibernate.validator 静态资源包里面 message 编写方式
      */
-    String message() default "{key}值必须包含在 {values} 内";
+    String message() default "参数值不合法";
 
     /**
      * 必须的属性
@@ -44,7 +44,7 @@ public @interface MatchOne {
     /**
      * 非必须
      */
-    String[] values() default {};
+    String slice() default "";
 
     /**
      * 非必须
@@ -55,11 +55,11 @@ public @interface MatchOne {
      * 必须实现 ConstraintValidator接口
      */
     class MatchOneValid implements ConstraintValidator<MatchOne, Object> {
-        private String[] values;
+        private String slice;
 
         @Override
         public void initialize(MatchOne constraintAnnotation) {
-            this.values = constraintAnnotation.values();
+            this.slice = constraintAnnotation.slice();
         }
 
         /**
@@ -71,11 +71,10 @@ public @interface MatchOne {
         @Override
         public boolean isValid(Object value, ConstraintValidatorContext context) {
             if (null == value || "".equals(value.toString())) {
-                // 为null 标识不验证
                 return true;
             }
             try {
-                return Arrays.stream(values).anyMatch(r -> r.equals(value.toString()));
+                return Arrays.stream(slice.split(",")).anyMatch(r -> r.equals(value.toString()));
             } catch (Exception e) {
                 return false;
             }

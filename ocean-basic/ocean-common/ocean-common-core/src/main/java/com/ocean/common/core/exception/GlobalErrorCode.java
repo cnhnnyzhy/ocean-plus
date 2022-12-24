@@ -17,4 +17,10 @@ public interface GlobalErrorCode {
 
     ErrorCode PARAMS_ERROR = new ErrorCode(600, "参数错误");
 
+
+    /**
+     * 无效的枚举值提示信息
+     */
+    String INVALID_ENUM_VALUE_MESSAGE = "无法识别的%s[%s]";
+
 }

@@ -24,9 +24,6 @@
         <git.commit.version>2.2.5</git.commit.version>
         <hutool.version>5.7.17</hutool.version>
         <spring-cloud-alibaba.version>2021.0.1.0</spring-cloud-alibaba.version>
-        <ocean.version>>1.0-SNAPSHOT</ocean.version>
-        <swagger.fox.version>3.0.0</swagger.fox.version>
-        <knife4j.version>2.0.9</knife4j.version>
     </properties>
 
     <dependencyManagement>
@@ -71,32 +68,37 @@
             <dependency>
                 <groupId>com.ocean</groupId>
                 <artifactId>ocean-common-core</artifactId>
-                <version>1.0-SNAPSHOT</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.ocean</groupId>
                 <artifactId>ocean-common-data</artifactId>
-                <version>1.0-SNAPSHOT</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.ocean</groupId>
                 <artifactId>ocean-common-security</artifactId>
-                <version>1.0-SNAPSHOT</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.ocean</groupId>
                 <artifactId>ocean-web</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ocean</groupId>
+                <artifactId>ocean-repository</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.ocean</groupId>
                 <artifactId>ocean-client</artifactId>
-                <version>1.0-SNAPSHOT</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.ocean</groupId>
                 <artifactId>ocean-admin-api</artifactId>
-                <version>1.0-SNAPSHOT</version>
+                <version>${project.version}</version>
             </dependency>
 
             <dependency>
@@ -149,33 +151,17 @@
                 <artifactId>servlet-api</artifactId>
                 <version>2.5</version>
             </dependency>
-            <!--接口文档-->
-            <dependency>
-                <groupId>io.springfox</groupId>
-                <artifactId>springfox-swagger-ui</artifactId>
-                <version>${swagger.fox.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.springfox</groupId>
-                <artifactId>springfox-swagger2</artifactId>
-                <version>${swagger.fox.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.springfox</groupId>
-                <artifactId>springfox-oas</artifactId>
-                <version>${swagger.fox.version}</version>
-            </dependency>
-            <!--knife4j spring ui -->
+            <!--引入Knife4j的官方start包,该指南选择Spring Boot版本<3.0,开发者需要注意-->
             <dependency>
                 <groupId>com.github.xiaoymin</groupId>
-                <artifactId>knife4j-spring-ui</artifactId>
-                <version>${knife4j.version}</version>
+                <artifactId>knife4j-openapi2-spring-boot-starter</artifactId>
+                <version>4.0.0</version>
             </dependency>
-            <!--knife4j是为Java MVC框架集成Swagger生成Api文档的增强-->
+            <!-- 动态数据源 -->
             <dependency>
-                <groupId>com.github.xiaoymin</groupId>
-                <artifactId>knife4j-micro-spring-boot-starter</artifactId>
-                <version>${knife4j.version}</version>
+                <groupId>com.baomidou</groupId>
+                <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+                <version>3.5.1</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
