@@ -11,15 +11,7 @@
     <modules>
         <module>ocean-dependencies</module>
         <module>ocean-apps</module>
-        <module>ocean-tools</module>
-        <module>ocean-dap</module>
-        <module>ocean-ddd</module>
-        <module>ocean-common</module>
-        <module>ocean-generator</module>
-        <module>ocean-auth</module>
         <module>ocean-basic</module>
-        <module>ocean-web</module>
-        <module>ocean-client</module>
     </modules>
 
     <properties>

@@ -11,6 +11,14 @@
 
     <artifactId>ocean-basic</artifactId>
     <packaging>pom</packaging>
+    <modules>
+        <module>ocean-auth</module>
+        <module>ocean-client</module>
+        <module>ocean-common</module>
+        <module>ocean-ddd</module>
+        <module>ocean-generator</module>
+        <module>ocean-web</module>
+    </modules>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
