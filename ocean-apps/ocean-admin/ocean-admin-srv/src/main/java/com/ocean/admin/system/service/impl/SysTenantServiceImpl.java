@@ -1,5 +1,6 @@
 package com.ocean.admin.system.service.impl;
 
+import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.ocean.admin.api.dto.rsp.TenantInfoRsp;
 import com.ocean.admin.api.enums.TenantStatus;
@@ -24,6 +25,7 @@ import java.util.stream.Collectors;
  */
 @RequiredArgsConstructor
 @Service
+@DS("slave")
 public class SysTenantServiceImpl implements SysTenantService {
     private final SysTenantRepository sysTenantRepository;
 

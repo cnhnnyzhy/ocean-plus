@@ -23,3 +23,15 @@ spring:
           url: jdbc:mysql://localhost:3306/ocean_admin?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
           username: root
           password: 123456
+mybatis-plus:
+  configuration:
+    # sql打印日志
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    # 开启自动驼峰命名规则映射
+    map-underscore-to-camel-case: true
+    # 如果查询结果中包含空值的列，则MyBatis在映射的时候，不会映射这个字段
+    call-setters-on-nulls: true
+logging:
+  level:
+    root: info
+    com.baomidou.dynamic: debug
