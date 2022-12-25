@@ -29,15 +29,6 @@
             <groupId>com.ocean</groupId>
             <artifactId>ocean-admin-api</artifactId>
         </dependency>
-
-        <dependency>
-            <groupId>org.mapstruct</groupId>
-            <artifactId>mapstruct</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok-mapstruct-binding</artifactId>
-        </dependency>
     </dependencies>
 
 </project>

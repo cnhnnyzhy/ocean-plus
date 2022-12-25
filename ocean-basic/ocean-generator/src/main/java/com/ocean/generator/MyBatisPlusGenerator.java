@@ -66,11 +66,11 @@ public class MyBatisPlusGenerator {
     public static void main(String[] args) {
         MyBatisPlusGenerator daoGeneratorUtil = null;
 
-        daoGeneratorUtil = new MyBatisPlusGenerator("yang.zhang", "/Users/ocean/Documents/temp/CodeGen/",
-                "jdbc:mysql://172.20.106.161:3306/vhall_tmp?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8",
-                "qa_user", "5Vftq9BZbmANrHCW",
-                "vhall-csd-form-srv", "com.vhall.csd", "form",
-                Lists.newArrayList("question_survey_answers", "question_survey_answer_items", "question_survey_answer_city"));
+        daoGeneratorUtil = new MyBatisPlusGenerator("ocean", "/Users/ocean/Documents/temp/CodeGen/",
+                "jdbc:mysql://localhost:3306/ocean_admin?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8",
+                "root", "123456",
+                "ocean-admin-srv", "com.ocean.admin", "tenant",
+                Lists.newArrayList("t_sys_tenant"));
         daoGeneratorUtil.generate();
     }
 

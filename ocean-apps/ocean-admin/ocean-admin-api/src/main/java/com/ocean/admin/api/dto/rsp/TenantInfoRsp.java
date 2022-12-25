@@ -39,22 +39,23 @@ public class TenantInfoRsp extends Rsp {
     private String domain;
 
     /**
-     * 开始时间
+     * 生效时间
      */
-    private LocalDateTime startTime;
+    private LocalDateTime validTime;
 
     /**
-     * 结束时间
+     * 失效时间
      */
-    private LocalDateTime endTime;
+    private LocalDateTime expireTime;
 
     /**
-     * 状态
+     * 状态：1-正常；2-锁定
      */
-    private Boolean status;
+    private Integer status;
 
     /**
-     * 是否删除：0-否 1-是
+     * 是否删除：0-否；1-是
      */
-    private String isDeleted;
+    private Integer isDeleted;
+
 }

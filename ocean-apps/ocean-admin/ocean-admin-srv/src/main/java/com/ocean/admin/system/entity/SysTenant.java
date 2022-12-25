@@ -3,10 +3,11 @@ package com.ocean.admin.system.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
-import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -14,7 +15,7 @@ import lombok.Setter;
  * </p>
  *
  * @author ocean
- * @since 2022-10-05
+ * @since 2022-12-25
  */
 @Getter
 @Setter
@@ -45,24 +46,24 @@ public class SysTenant implements Serializable {
     private String domain;
 
     /**
-     * 开始时间
+     * 生效时间
      */
-    private LocalDateTime startTime;
+    private LocalDateTime validTime;
 
     /**
-     * 结束时间
+     * 失效时间
      */
-    private LocalDateTime endTime;
+    private LocalDateTime expireTime;
 
     /**
-     * 状态
+     * 状态：1-正常；2-锁定
      */
-    private Boolean status;
+    private Integer status;
 
     /**
-     * 是否删除：0-否 1-是
+     * 是否删除：0-否；1-是
      */
-    private String isDeleted;
+    private Integer isDeleted;
 
     /**
      * 创建人id
@@ -70,7 +71,7 @@ public class SysTenant implements Serializable {
     private Long createdBy;
 
     /**
-     * 修改人id
+     * 更新人id
      */
     private Long updatedBy;
 
@@ -83,6 +84,11 @@ public class SysTenant implements Serializable {
      * 更新时间
      */
     private LocalDateTime updatedAt;
+
+    /**
+     * 备注
+     */
+    private String remark;
 
 
 }
