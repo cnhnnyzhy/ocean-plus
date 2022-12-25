@@ -1,12 +1,12 @@
-package com.ocean.admin.api.dto.req;
+package com.ocean.admin.api.dto.req.qry;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import com.ocean.common.core.dto.Req;
 import com.ocean.common.core.enums.Deleted;
 import com.ocean.common.core.validator.MatchOne;
 import com.ocean.common.core.validator.OneOf;
 import com.ocean.common.core.validator.OneOfInt;
+import com.ocean.common.dto.Qry;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
@@ -19,7 +19,7 @@ import javax.validation.constraints.NotBlank;
  */
 @Data
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public class QueryTenantReq extends Req {
+public class QueryTenantQry extends Qry {
 
     @MatchOne(slice = Deleted.ENUM_VALUES, key = "is_deleted")
     private Integer isDeleted;

@@ -1,4 +1,4 @@
-package com.ocean.common.core.dto;
+package com.ocean.common.dto;
 
 import java.io.Serializable;
 
@@ -8,5 +8,5 @@ import java.io.Serializable;
  * @author ocean
  * @date 2022/10/15
  */
-public class DTO implements Serializable {
+public abstract class DTO implements Serializable {
 }

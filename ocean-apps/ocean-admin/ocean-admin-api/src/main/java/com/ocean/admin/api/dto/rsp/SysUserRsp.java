@@ -1,6 +1,6 @@
 package com.ocean.admin.api.dto.rsp;
 
-import com.ocean.common.core.dto.Rsp;
+import com.ocean.common.dto.Rsp;
 import lombok.Data;
 
 import java.time.LocalDateTime;

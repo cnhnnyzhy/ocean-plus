@@ -2,7 +2,7 @@ package com.ocean.admin.api.dto.rsp;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import com.ocean.common.core.dto.Rsp;
+import com.ocean.common.dto.Rsp;
 import lombok.Data;
 
 import java.time.LocalDateTime;

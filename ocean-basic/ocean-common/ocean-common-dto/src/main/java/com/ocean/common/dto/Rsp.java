@@ -1,4 +1,4 @@
-package com.ocean.common.core.dto;
+package com.ocean.common.dto;
 
 /**
  * 基础响应DTO
@@ -6,5 +6,5 @@ package com.ocean.common.core.dto;
  * @author ocean
  * @date 2022/10/15
  */
-public class Rsp extends DTO {
+public abstract class Rsp extends DTO {
 }

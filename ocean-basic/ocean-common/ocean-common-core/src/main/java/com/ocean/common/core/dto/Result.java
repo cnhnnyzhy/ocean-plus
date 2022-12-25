@@ -34,6 +34,10 @@ public class Result<T> implements Serializable {
     @JsonProperty("trace_id")
     private String traceId;
 
+    public static <T> Result<T> success() {
+        return success(null);
+    }
+
     public static <T> Result<T> success(T data) {
         Result<T> result = new Result<>();
         result.setCode(GlobalErrorCode.SUCCESS.getCode());

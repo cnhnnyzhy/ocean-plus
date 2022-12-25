@@ -1,4 +1,4 @@
-package com.ocean.common.core.dto;
+package com.ocean.common.dto;
 
 /**
  * 基础请求DTO
@@ -6,5 +6,5 @@ package com.ocean.common.core.dto;
  * @author ocean
  * @date 2022/10/15
  */
-public class Req extends DTO {
+public abstract class Req extends DTO {
 }
