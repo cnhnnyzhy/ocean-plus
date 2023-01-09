@@ -1,0 +1,31 @@
+server:
+  port: 10000
+spring:
+  application:
+    name: ocean-gateway
+  main:
+    web-application-type: reactive
+  redis:
+    host: ocean-redis
+
+
+# 配置文件加密根密码
+jasypt:
+  encryptor:
+    password: pigx
+    algorithm: PBEWithMD5AndDES
+    iv-generator-classname: org.jasypt.iv.NoIvGenerator
+
+gateway:
+  encode-key: 'pigxpigxpigxpigx'
+
+
+ribbon:
+  rule:
+    gray-enabled: true
+
+# 验证码相关配置参考： http://t.cn/A647jEdu
+aj:
+  captcha:
+    cache-type: redis
+    water-mark: pig4cloud

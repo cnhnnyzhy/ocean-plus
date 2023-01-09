@@ -16,6 +16,7 @@
         <module>ocean-admin</module>
         <module>ocean-dap</module>
         <module>ocean-tools</module>
+        <module>ocean-gateway</module>
     </modules>
 
     <properties>
