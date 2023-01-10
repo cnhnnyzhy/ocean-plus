@@ -1,12 +1,13 @@
 package com.ocean.gateway.handler;
 
+import com.anji.captcha.model.common.Const;
 import com.anji.captcha.model.common.ResponseModel;
 import com.anji.captcha.model.vo.CaptchaVO;
 import com.anji.captcha.service.CaptchaService;
+import com.anji.captcha.service.impl.CaptchaServiceFactory;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ocean.common.core.constant.Constants;
 import com.ocean.common.core.dto.Result;
-import com.ocean.common.core.util.SpringContextHolder;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +19,8 @@ import org.springframework.web.reactive.function.server.HandlerFunction;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
+
+import java.util.Properties;
 
 /**
  * 图像验证码校验处理器
@@ -40,7 +43,9 @@ public class ImageCodeCheckHandler implements HandlerFunction<ServerResponse> {
         vo.setToken(request.queryParam("token").get());
         vo.setCaptchaType(Constants.IMAGE_CODE_TYPE);
 
-        CaptchaService captchaService = SpringContextHolder.getBean(CaptchaService.class);
+        Properties config = new Properties();
+        config.setProperty(Const.CAPTCHA_TYPE, Constants.IMAGE_CODE_TYPE);
+        CaptchaService captchaService = CaptchaServiceFactory.getInstance(config);
         ResponseModel responseModel = captchaService.check(vo);
 
         return ServerResponse.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON)

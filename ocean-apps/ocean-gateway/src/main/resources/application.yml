@@ -1,5 +1,5 @@
 server:
-  port: 10000
+  port: 9999
 spring:
   application:
     name: ocean-gateway
@@ -17,7 +17,7 @@ jasypt:
     iv-generator-classname: org.jasypt.iv.NoIvGenerator
 
 gateway:
-  encode-key: 'pigxpigxpigxpigx'
+  encode-key: 'ocean'
 
 
 ribbon:
@@ -28,4 +28,4 @@ ribbon:
 aj:
   captcha:
     cache-type: redis
-    water-mark: pig4cloud
+    water-mark: ocean
