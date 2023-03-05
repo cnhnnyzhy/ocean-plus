@@ -1,6 +1,6 @@
 package com.ocean.ddd.repository;
 
-import com.ocean.ddd.domain.entity.Tag;
+import com.ocean.ddd.module.domain.entity.Tag;
 
 /**
  * @Description: TagRepository

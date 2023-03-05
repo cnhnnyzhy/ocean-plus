@@ -12,13 +12,13 @@
     <packaging>pom</packaging>
     <modules>
         <module>ocean-ddd-start</module>
-        <module>ocean-ddd-web</module>
+        <module>ocean-ddd-adapter</module>
         <module>ocean-ddd-acl</module>
         <module>ocean-ddd-client</module>
         <module>ocean-ddd-common</module>
         <module>ocean-ddd-dto</module>
         <module>ocean-ddd-infrastructure</module>
-        <module>ocean-ddd-service</module>
+        <module>ocean-ddd-app</module>
         <module>ocean-ddd-domain</module>
     </modules>
 
@@ -137,12 +137,12 @@
             </dependency>
             <dependency>
                 <groupId>com.ocean</groupId>
-                <artifactId>ocean-ddd-service</artifactId>
+                <artifactId>ocean-ddd-app</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.ocean</groupId>
-                <artifactId>ocean-ddd-web</artifactId>
+                <artifactId>ocean-ddd-adapter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

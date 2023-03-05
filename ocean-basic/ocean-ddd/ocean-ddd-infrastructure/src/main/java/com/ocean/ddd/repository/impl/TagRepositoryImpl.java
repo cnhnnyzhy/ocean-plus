@@ -2,8 +2,8 @@ package com.ocean.ddd.repository.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ocean.ddd.assembler.EntityToDataObjectConvertor;
-import com.ocean.ddd.domain.entity.Tag;
-import com.ocean.ddd.domain.valueobject.TagId;
+import com.ocean.ddd.module.domain.entity.Tag;
+import com.ocean.ddd.module.domain.valueobject.TagId;
 import com.ocean.ddd.repository.TagRepository;
 import com.ocean.ddd.repository.dataobject.TagDO;
 import com.ocean.ddd.repository.mapper.TagMapper;
