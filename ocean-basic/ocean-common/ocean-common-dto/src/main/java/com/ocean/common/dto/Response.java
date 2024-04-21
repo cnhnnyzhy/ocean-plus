@@ -5,15 +5,19 @@ package com.ocean.common.dto;
  *
  * @author fulan.zjf 2017年10月21日 下午8:53:17
  */
-public class Response extends DTO {
+public class Response<T> extends DTO {
 
     private static final long serialVersionUID = 1L;
+
+    public static final String SUCCESS_CODE = "000000";
 
     private boolean success;
 
     private String code;
 
     private String message;
+
+    private T data;
 
     public boolean isSuccess() {
         return success;
@@ -39,14 +43,24 @@ public class Response extends DTO {
         this.message = message;
     }
 
+    public T getData() {
+        return data;
+    }
+
+    public void setData(T data) {
+        this.data = data;
+    }
+
     @Override
     public String toString() {
         return "Response [success=" + success + ", code=" + code + ", message=" + message + "]";
     }
 
-    public static Response buildSuccess() {
+    public static <T> Response buildSuccess(T data) {
         Response response = new Response();
         response.setSuccess(true);
+        response.setCode(SUCCESS_CODE);
+        response.setData(data);
         return response;
     }
 
@@ -57,5 +71,4 @@ public class Response extends DTO {
         response.setMessage(message);
         return response;
     }
-
 }

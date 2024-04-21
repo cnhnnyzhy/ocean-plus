@@ -1,6 +1,5 @@
 package com.ocean.common.dto;
 
-import com.alibaba.cola.dto.Query;
 
 /**
  * PageQuery
@@ -13,8 +12,8 @@ public abstract class PageQuery extends Query {
     public static final String ASC = "ASC";
     public static final String DESC = "DESC";
     private static final int DEFAULT_PAGE_SIZE = 10;
-    private int pageSize = 10;
-    private int pageIndex = 1;
+    private int pageSize = DEFAULT_PAGE_SIZE;
+    private int pageNo = 1;
     private String orderBy;
     private String orderDirection = "DESC";
     private String groupBy;
@@ -23,18 +22,18 @@ public abstract class PageQuery extends Query {
     public PageQuery() {
     }
 
-    public int getPageIndex() {
-        return this.pageIndex < 1 ? 1 : this.pageIndex;
+    public int getPageNo() {
+        return this.pageNo < 1 ? 1 : this.pageNo;
     }
 
-    public PageQuery setPageIndex(int pageIndex) {
-        this.pageIndex = pageIndex;
+    public PageQuery setPageNo(int pageNo) {
+        this.pageNo = pageNo;
         return this;
     }
 
     public int getPageSize() {
         if (this.pageSize < 1) {
-            this.pageSize = 10;
+            this.pageSize = DEFAULT_PAGE_SIZE;
         }
 
         return this.pageSize;
@@ -42,7 +41,7 @@ public abstract class PageQuery extends Query {
 
     public PageQuery setPageSize(int pageSize) {
         if (pageSize < 1) {
-            pageSize = 10;
+            pageSize = DEFAULT_PAGE_SIZE;
         }
 
         this.pageSize = pageSize;
@@ -50,7 +49,7 @@ public abstract class PageQuery extends Query {
     }
 
     public int getOffset() {
-        return (this.getPageIndex() - 1) * this.getPageSize();
+        return (this.getPageNo() - 1) * this.getPageSize();
     }
 
     public String getOrderBy() {
@@ -67,7 +66,7 @@ public abstract class PageQuery extends Query {
     }
 
     public PageQuery setOrderDirection(String orderDirection) {
-        if ("ASC".equalsIgnoreCase(orderDirection) || "DESC".equalsIgnoreCase(orderDirection)) {
+        if (ASC.equalsIgnoreCase(orderDirection) || DESC.equalsIgnoreCase(orderDirection)) {
             this.orderDirection = orderDirection;
         }
 
