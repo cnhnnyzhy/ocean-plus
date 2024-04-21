@@ -2,7 +2,7 @@ package com.ocean.admin.api.dto.req.cmd;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import com.ocean.common.dto.Cmd;
+import com.ocean.common.dto.Command;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -17,7 +17,7 @@ import javax.validation.constraints.NotNull;
  */
 @Data
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public class TenantAddCmd extends Cmd {
+public class TenantAddCommand extends Command {
 
     @ApiModelProperty(name = "租户名称")
     @NotBlank

@@ -1,6 +1,6 @@
 package com.ocean.admin.system.assembler;
 
-import com.ocean.admin.api.dto.req.cmd.TenantAddCmd;
+import com.ocean.admin.api.dto.req.cmd.TenantAddCommand;
 import com.ocean.admin.api.dto.rsp.TenantInfoRsp;
 import com.ocean.admin.system.entity.SysTenant;
 import org.mapstruct.Mapper;
@@ -18,5 +18,5 @@ public interface TenantAssembler {
 
     TenantInfoRsp toRsp(SysTenant entity);
 
-    SysTenant toEntity(TenantAddCmd dto);
+    SysTenant toEntity(TenantAddCommand dto);
 }

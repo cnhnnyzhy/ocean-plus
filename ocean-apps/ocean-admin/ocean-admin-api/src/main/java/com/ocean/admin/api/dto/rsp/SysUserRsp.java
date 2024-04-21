@@ -1,6 +1,6 @@
 package com.ocean.admin.api.dto.rsp;
 
-import com.ocean.common.dto.Rsp;
+import com.ocean.common.dto.RpcResponse;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
  * @date 2022/11/15
  */
 @Data
-public class SysUserRsp extends Rsp {
+public class SysUserRsp extends RpcResponse {
     private Long id;
 
     /**

@@ -2,7 +2,7 @@ package com.ocean.admin.system.service.impl;
 
 import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.ocean.admin.api.dto.req.cmd.TenantAddCmd;
+import com.ocean.admin.api.dto.req.cmd.TenantAddCommand;
 import com.ocean.admin.api.dto.rsp.TenantInfoRsp;
 import com.ocean.admin.api.enums.TenantStatus;
 import com.ocean.admin.system.assembler.TenantAssembler;
@@ -42,7 +42,7 @@ public class SysTenantServiceImpl implements SysTenantService {
 
     @DS("admin_0")
     @Override
-    public void add(TenantAddCmd req) {
+    public void add(TenantAddCommand req) {
         SysTenant entity = TenantAssembler.INSTANCE.toEntity(req);
         LocalDateTime now = LocalDateTime.now();
         entity.setStatus(1);
@@ -58,7 +58,7 @@ public class SysTenantServiceImpl implements SysTenantService {
 
     @DS("admin_1")
     @Override
-    public void add2(TenantAddCmd req) {
+    public void add2(TenantAddCommand req) {
         add(req);
     }
 }

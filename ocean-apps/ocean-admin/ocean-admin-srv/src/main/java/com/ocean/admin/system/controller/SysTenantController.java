@@ -1,7 +1,7 @@
 package com.ocean.admin.system.controller;
 
 import com.baomidou.dynamic.datasource.annotation.DSTransactional;
-import com.ocean.admin.api.dto.req.cmd.TenantAddCmd;
+import com.ocean.admin.api.dto.req.cmd.TenantAddCommand;
 import com.ocean.admin.api.dto.rsp.TenantInfoRsp;
 import com.ocean.admin.system.service.SysTenantService;
 import com.ocean.common.core.dto.Result;
@@ -39,11 +39,11 @@ public class SysTenantController {
         return Result.success(sysTenantService.getNormalTenantList());
     }
 
-    
+
     @DSTransactional
     @ApiOperation(value = "添加租户接口")
     @PostMapping("add")
-    public Result add(@Validated @RequestBody TenantAddCmd req) {
+    public Result add(@Validated @RequestBody TenantAddCommand req) {
         sysTenantService.add(req);
         sysTenantService.add2(req);
         return Result.success();

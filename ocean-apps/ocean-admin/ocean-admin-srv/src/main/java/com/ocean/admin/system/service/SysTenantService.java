@@ -1,6 +1,6 @@
 package com.ocean.admin.system.service;
 
-import com.ocean.admin.api.dto.req.cmd.TenantAddCmd;
+import com.ocean.admin.api.dto.req.cmd.TenantAddCommand;
 import com.ocean.admin.api.dto.rsp.TenantInfoRsp;
 
 import java.util.List;
@@ -24,8 +24,8 @@ public interface SysTenantService {
      *
      * @param req
      */
-    void add(TenantAddCmd req);
+    void add(TenantAddCommand req);
 
-    void add2(TenantAddCmd req);
+    void add2(TenantAddCommand req);
 
 }

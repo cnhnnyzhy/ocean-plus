@@ -1,6 +1,6 @@
 package com.ocean.admin.api.dto.rsp;
 
-import com.ocean.common.dto.Rsp;
+import com.ocean.common.dto.RpcResponse;
 import lombok.Data;
 
 /**
@@ -10,7 +10,7 @@ import lombok.Data;
  * @date 2022/10/16
  */
 @Data
-public class OauthClientDetailsRsp extends Rsp {
+public class OauthClientDetailsRsp extends RpcResponse {
     private static final long serialVersionUID = 8046194361622683714L;
 
     private Long id;

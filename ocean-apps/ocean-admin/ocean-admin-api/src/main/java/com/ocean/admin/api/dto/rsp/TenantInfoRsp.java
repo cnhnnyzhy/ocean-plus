@@ -2,7 +2,7 @@ package com.ocean.admin.api.dto.rsp;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import com.ocean.common.dto.Rsp;
+import com.ocean.common.dto.RpcResponse;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
  */
 @Data
 @JsonNaming(value = PropertyNamingStrategies.SnakeCaseStrategy.class)
-public class TenantInfoRsp extends Rsp {
+public class TenantInfoRsp extends RpcResponse {
 
     private static final long serialVersionUID = 722496126087556599L;
     /**

@@ -1,6 +1,6 @@
 package com.ocean.ddd.acl.query;
 
-import com.ocean.ddd.dto.req.PageReq;
+import com.ocean.ddd.dto.req.qry.PageQry;
 import com.ocean.ddd.dto.rsp.PageRsp;
 
 /**
@@ -37,5 +37,5 @@ public interface Query<T> {
      * @param req
      * @return
      */
-    PageRsp<T> queryPage(PageReq req);
+    PageRsp<T> queryPage(PageQry req);
 }

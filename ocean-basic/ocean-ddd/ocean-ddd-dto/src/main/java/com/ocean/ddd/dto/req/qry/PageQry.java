@@ -1,6 +1,6 @@
-package com.ocean.ddd.dto.req;
+package com.ocean.ddd.dto.req.qry;
 
-import com.ocean.ddd.dto.Cmd;
+import com.ocean.ddd.dto.Qry;
 import lombok.Data;
 
 /**
@@ -9,7 +9,7 @@ import lombok.Data;
  * @Date: 2022/7/12 15:07
  */
 @Data
-public abstract class PageReq extends Cmd {
+public abstract class PageQry extends Qry {
     /**
      * 当前页
      */

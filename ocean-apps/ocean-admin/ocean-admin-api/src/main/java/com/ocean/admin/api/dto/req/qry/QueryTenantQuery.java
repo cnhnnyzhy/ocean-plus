@@ -6,7 +6,7 @@ import com.ocean.common.core.enums.Deleted;
 import com.ocean.common.core.validator.MatchOne;
 import com.ocean.common.core.validator.OneOf;
 import com.ocean.common.core.validator.OneOfInt;
-import com.ocean.common.dto.Qry;
+import com.ocean.common.dto.Query;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
@@ -19,7 +19,7 @@ import javax.validation.constraints.NotBlank;
  */
 @Data
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public class QueryTenantQry extends Qry {
+public class QueryTenantQuery extends Query {
 
     @MatchOne(slice = Deleted.ENUM_VALUES, key = "is_deleted")
     private Integer isDeleted;

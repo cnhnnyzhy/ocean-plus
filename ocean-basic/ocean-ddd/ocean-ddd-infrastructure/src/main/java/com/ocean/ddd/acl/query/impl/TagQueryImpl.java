@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ocean.ddd.acl.query.TagQuery;
 import com.ocean.ddd.assembler.DataObjectToRspAssembler;
-import com.ocean.ddd.dto.req.PageReq;
+import com.ocean.ddd.dto.req.qry.PageQry;
 import com.ocean.ddd.dto.req.qry.TagGetListQry;
 import com.ocean.ddd.dto.rsp.PageRsp;
 import com.ocean.ddd.dto.rsp.TagRsp;
@@ -35,7 +35,7 @@ public class TagQueryImpl extends ServiceImpl<TagMapper, TagDO> implements TagQu
     }
 
     @Override
-    public PageRsp<TagRsp> queryPage(PageReq req) {
+    public PageRsp<TagRsp> queryPage(PageQry req) {
         return null;
     }
 }

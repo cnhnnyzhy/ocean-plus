@@ -5,6 +5,6 @@ package com.ocean.common.dto;
  * @Author: yang.zhang
  * @Date: 2022/4/19 19:50
  */
-public abstract class Qry extends Cmd {
+public abstract class Query extends Command {
     private static final long serialVersionUID = 1L;
 }
