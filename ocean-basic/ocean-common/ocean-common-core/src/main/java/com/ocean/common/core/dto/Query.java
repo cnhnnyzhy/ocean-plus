@@ -1,4 +1,4 @@
-package com.ocean.common.dto;
+package com.ocean.common.core.dto;
 
 /**
  * @Description: 抽象的查询类DTO
@@ -6,5 +6,4 @@ package com.ocean.common.dto;
  * @Date: 2022/4/19 19:50
  */
 public abstract class Query extends Command {
-    private static final long serialVersionUID = 1L;
 }

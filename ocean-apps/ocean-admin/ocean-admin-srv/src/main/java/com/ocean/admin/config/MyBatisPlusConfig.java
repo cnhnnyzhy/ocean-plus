@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
  * @Author: yang.zhang
  * @Date: 2022/10/4 22:56
  */
-@MapperScan(basePackages = {"com.ocean.admin.system.mapper"})
+@MapperScan(basePackages = {"com.ocean.admin.**.mapper"})
 @Configuration
 public class MyBatisPlusConfig {
 }

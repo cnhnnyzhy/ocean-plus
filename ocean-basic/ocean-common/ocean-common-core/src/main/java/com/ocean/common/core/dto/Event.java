@@ -1,4 +1,4 @@
-package com.ocean.common.dto;
+package com.ocean.common.core.dto;
 
 /**
  * @Description: 抽象的事件类DTO

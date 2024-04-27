@@ -83,11 +83,6 @@
             </dependency>
             <dependency>
                 <groupId>com.ocean</groupId>
-                <artifactId>ocean-common-dto</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.ocean</groupId>
                 <artifactId>ocean-web</artifactId>
                 <version>${project.version}</version>
             </dependency>

@@ -1,6 +1,6 @@
 package com.ocean.admin.api.dto.rsp;
 
-import com.ocean.common.dto.RpcResponse;
+import com.ocean.common.core.dto.RpcResponse;
 import lombok.Data;
 
 /**

@@ -2,7 +2,7 @@ package com.ocean.admin.api.dto.req.cmd;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import com.ocean.common.dto.Command;
+import com.ocean.common.core.dto.Command;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 

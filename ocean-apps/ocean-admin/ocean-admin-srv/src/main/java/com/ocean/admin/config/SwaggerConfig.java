@@ -50,7 +50,7 @@ public class SwaggerConfig {
                 // 启动用于api选择的构建器
                 .select()
                 // 扫描接口的包
-                .apis(RequestHandlerSelectors.basePackage("com.ocean.admin"))
+                .apis(RequestHandlerSelectors.basePackage("com.ocean"))
                 // 路径过滤器（扫描所有路径）
                 .paths(PathSelectors.any())
                 .build();

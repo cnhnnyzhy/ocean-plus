@@ -4,6 +4,7 @@ import cn.hutool.core.util.StrUtil;
 import com.ocean.common.core.dto.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.hibernate.validator.internal.engine.path.PathImpl;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.validation.BindException;
@@ -16,7 +17,9 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
+import javax.validation.Path;
 import java.util.List;
 import java.util.Objects;
 
@@ -34,11 +37,10 @@ public class GlobalExceptionAdvice {
     private static final String EXCEPTION_PREFIX = "Exception";
 
     private static final String PARAM_ERROR_MSG_PREFIX = "参数错误：";
-    private ObjectError error;
 
     @ResponseBody
     @ExceptionHandler(value = BindException.class)
-    public Result<Object> validationException(HttpServletRequest request, BindException e) {
+    public Result<?> bindException(HttpServletRequest request, BindException e) {
         List<ObjectError> errors = e.getAllErrors();
         ObjectError error = errors.get(0);
         String message = error.getDefaultMessage();
@@ -60,7 +62,7 @@ public class GlobalExceptionAdvice {
 
     @ResponseBody
     @ExceptionHandler(value = MethodArgumentTypeMismatchException.class)
-    public Result<Object> validationNumException(HttpServletRequest request, MethodArgumentTypeMismatchException e) {
+    public Result<?> methodArgumentTypeMismatchException(HttpServletRequest request, MethodArgumentTypeMismatchException e) {
         String field = e.getName().replaceAll("[A-Z]", "_$0").toLowerCase();
         String message = field + "参数格式错误";
         return Result.error(GlobalErrorCode.PARAMS_ERROR, PARAM_ERROR_MSG_PREFIX + message);
@@ -68,14 +70,29 @@ public class GlobalExceptionAdvice {
 
     @ResponseBody
     @ExceptionHandler(value = {IllegalArgumentException.class, ConstraintViolationException.class})
-    public Result<Object> argumentException(HttpServletRequest request, Exception e) {
+    public Result<?> argumentException(HttpServletRequest request, Exception e) {
+        String message;
+        String field;
+        if (e instanceof ConstraintViolationException) {
+            ConstraintViolationException exception = (ConstraintViolationException) e;
+            ConstraintViolation constraintViolation = exception.getConstraintViolations().iterator().next();
+            Path path = constraintViolation.getPropertyPath();
+            if (path instanceof PathImpl) {
+                field = ((PathImpl) path).getLeafNode().getName();
+                message = "参数[" + field + "]" + constraintViolation.getMessage();
+            } else {
+                message = exception.getMessage();
+            }
+        } else {
+            message = e.getMessage();
+        }
         log.error(EXCEPTION_PREFIX, e);
-        return Result.error(GlobalErrorCode.PARAMS_ERROR, PARAM_ERROR_MSG_PREFIX + e.getMessage());
+        return Result.error(GlobalErrorCode.PARAMS_ERROR, PARAM_ERROR_MSG_PREFIX + message);
     }
 
     @ResponseBody
     @ExceptionHandler(value = MissingServletRequestParameterException.class)
-    public Result<Object> missingServletRequestParameterExceptionHandler(MissingServletRequestParameterException e) {
+    public Result<?> missingServletRequestParameterExceptionHandler(MissingServletRequestParameterException e) {
         log.error(EXCEPTION_PREFIX, e);
         String message = e.getParameterName();
         return Result.error(GlobalErrorCode.PARAMS_ERROR, PARAM_ERROR_MSG_PREFIX + message);
@@ -83,7 +100,7 @@ public class GlobalExceptionAdvice {
 
     @ResponseBody
     @ExceptionHandler(value = BizException.class)
-    public Result<Object> bizException(BizException e) {
+    public Result<?> bizException(BizException e) {
         if (Objects.isNull(e.getCode()) || e.getCode() != GlobalErrorCode.PARAMS_ERROR.getCode()) {
             if (StringUtils.isNotBlank(e.getData())) {
                 log.error(EXCEPTION_PREFIX + " data=" + e.getData(), e);
@@ -96,8 +113,8 @@ public class GlobalExceptionAdvice {
 
     @ResponseBody
     @ExceptionHandler(value = Exception.class)
-    public Result<Object> otherException(Exception e) {
+    public Result<?> systemException(Exception e) {
         log.error(EXCEPTION_PREFIX, e);
-        return Result.error(GlobalErrorCode.FAILED.getCode(), "系统异常");
+        return Result.error(GlobalErrorCode.FAILED.getCode(), "系统出现异常，请联系管理员！");
     }
 }
