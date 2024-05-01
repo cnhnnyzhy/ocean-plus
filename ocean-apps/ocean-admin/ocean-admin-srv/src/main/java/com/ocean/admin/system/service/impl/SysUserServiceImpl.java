@@ -1,12 +1,12 @@
 package com.ocean.admin.system.service.impl;
 
-import cn.hutool.core.lang.Assert;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.ocean.admin.api.dto.rsp.SysUserRsp;
 import com.ocean.admin.system.entity.SysUser;
 import com.ocean.admin.system.repository.SysRoleRepository;
 import com.ocean.admin.system.repository.SysUserRepository;
 import com.ocean.admin.system.service.SysUserService;
+import com.ocean.framework.core.lang.Assert;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

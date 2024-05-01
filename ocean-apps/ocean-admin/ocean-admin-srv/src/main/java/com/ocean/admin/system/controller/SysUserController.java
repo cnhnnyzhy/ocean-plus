@@ -1,7 +1,7 @@
 package com.ocean.admin.system.controller;
 
 import com.ocean.admin.api.dto.rsp.SysUserInfoRsp;
-import com.ocean.common.core.dto.Result;
+import com.ocean.framework.core.dto.Result;
 import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

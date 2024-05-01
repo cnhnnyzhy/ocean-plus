@@ -9,7 +9,7 @@ import com.ocean.admin.system.assembler.TenantAssembler;
 import com.ocean.admin.system.entity.SysTenant;
 import com.ocean.admin.system.repository.SysTenantRepository;
 import com.ocean.admin.system.service.SysTenantService;
-import com.ocean.common.core.enums.Deleted;
+import com.ocean.framework.core.enums.Deleted;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

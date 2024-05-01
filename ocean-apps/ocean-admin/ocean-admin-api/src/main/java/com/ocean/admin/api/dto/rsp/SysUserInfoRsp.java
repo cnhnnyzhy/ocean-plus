@@ -1,6 +1,6 @@
 package com.ocean.admin.api.dto.rsp;
 
-import com.ocean.common.core.dto.RpcResponse;
+import com.ocean.framework.core.dto.DTO;
 import lombok.Data;
 
 /**
@@ -10,7 +10,7 @@ import lombok.Data;
  * @date 2022/11/15
  */
 @Data
-public class SysUserInfoRsp extends RpcResponse {
+public class SysUserInfoRsp extends DTO {
     /**
      * 用户基本信息
      */

@@ -7,7 +7,7 @@ import com.anji.captcha.service.CaptchaService;
 import com.anji.captcha.service.impl.CaptchaServiceFactory;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ocean.common.core.constant.Constants;
-import com.ocean.common.core.dto.Result;
+import com.ocean.framework.core.dto.Result;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;

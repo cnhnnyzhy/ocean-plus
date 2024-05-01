@@ -5,13 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.ocean</groupId>
-    <artifactId>ocean-plus</artifactId>
+    <artifactId>ocean-parent</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>ocean-dependencies</module>
         <module>ocean-apps</module>
         <module>ocean-basic</module>
+        <module>ocean-framework</module>
     </modules>
 
     <properties>
@@ -63,8 +64,23 @@
             <!-- Ocean 模块-->
             <dependency>
                 <groupId>com.ocean</groupId>
+                <artifactId>ocean-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ocean</groupId>
+                <artifactId>ocean-web</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ocean</groupId>
+                <artifactId>ocean-repository</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ocean</groupId>
                 <artifactId>ocean-basic</artifactId>
-                <version>1.0-SNAPSHOT</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.ocean</groupId>
@@ -79,16 +95,6 @@
             <dependency>
                 <groupId>com.ocean</groupId>
                 <artifactId>ocean-common-security</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.ocean</groupId>
-                <artifactId>ocean-web</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.ocean</groupId>
-                <artifactId>ocean-repository</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -161,7 +167,7 @@
             <dependency>
                 <groupId>com.github.xiaoymin</groupId>
                 <artifactId>knife4j-openapi2-spring-boot-starter</artifactId>
-                <version>4.0.0</version>
+                <version>4.3.0</version>
             </dependency>
             <dependency>
                 <groupId>io.swagger</groupId>

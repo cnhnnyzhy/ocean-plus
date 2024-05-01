@@ -4,7 +4,7 @@ import com.baomidou.dynamic.datasource.annotation.DSTransactional;
 import com.ocean.admin.api.dto.req.cmd.TenantAddCommand;
 import com.ocean.admin.api.dto.rsp.TenantInfoRsp;
 import com.ocean.admin.system.service.SysTenantService;
-import com.ocean.common.core.dto.Result;
+import com.ocean.framework.core.dto.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;

@@ -1,6 +1,7 @@
 package com.ocean.common.core.util;
 
-import com.ocean.common.core.dto.Result;
+
+import com.ocean.framework.core.dto.Result;
 
 import java.util.Objects;
 import java.util.Optional;

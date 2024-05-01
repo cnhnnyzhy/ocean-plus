@@ -1,7 +1,7 @@
 package com.ocean.auth.exception;
 
-import com.ocean.common.core.exception.ErrorCode;
-import com.ocean.common.core.exception.GlobalErrorCode;
+import com.ocean.framework.core.exception.ErrorCode;
+import com.ocean.framework.core.exception.GlobalErrorCode;
 
 /**
  * 业务异常错误码

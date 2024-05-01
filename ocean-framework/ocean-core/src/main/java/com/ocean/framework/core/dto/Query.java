@@ -1,0 +1,9 @@
+package com.ocean.framework.core.dto;
+
+/**
+ * @Description: 抽象的查询类DTO
+ * @Author: yang.zhang
+ * @Date: 2022/4/19 19:50
+ */
+public abstract class Query extends Command {
+}
