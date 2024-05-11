@@ -15,9 +15,9 @@ public abstract class PageQuery extends BasePageQuery {
     public PageQuery() {
     }
 
-    @ApiModelProperty(name = "每页大小", notes = "默认10条")
+    @ApiModelProperty(value = "每页大小", notes = "默认10条")
     private int pageSize = DEFAULT_PAGE_SIZE;
-    @ApiModelProperty(name = "当前页码", notes = "默认第1页")
+    @ApiModelProperty(value = "当前页码", notes = "默认第1页")
     private int pageNo = DEFAULT_PAGE_NO;
 
 

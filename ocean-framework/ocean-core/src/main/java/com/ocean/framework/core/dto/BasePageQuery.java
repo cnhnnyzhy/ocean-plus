@@ -28,11 +28,11 @@ public abstract class BasePageQuery extends Query {
     private static final String ASC = "asc";
     private static final String DESC = "desc";
 
-    @ApiModelProperty(name = "排序字段", notes = "多个以逗号分隔")
+    @ApiModelProperty(value = "排序字段", notes = "多个以逗号分隔")
     private String orderBy;
-    @ApiModelProperty(name = "排序类型：asc-升序，desc-降序", notes = "多个以逗号分隔，必须与排序字段个数一致")
+    @ApiModelProperty(value = "排序类型：asc-升序，desc-降序", notes = "多个以逗号分隔，必须与排序字段个数一致")
     private String orderAsc = ASC;
-    @ApiModelProperty(name = "是否需要查询总数", notes = "true|false")
+    @ApiModelProperty(value = "是否需要查询总数", notes = "true|false")
     private boolean needTotalCount = true;
 
     protected BasePageQuery() {

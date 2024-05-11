@@ -11,9 +11,9 @@ import io.swagger.annotations.ApiModelProperty;
  * @date 2024/4/18
  */
 public abstract class OffsetPageQuery extends BasePageQuery {
-    @ApiModelProperty(name = "每次查询限制大小", notes = "默认10条")
+    @ApiModelProperty(value = "每次查询限制大小", notes = "默认10条")
     private int limit = DEFAULT_LIMIT;
-    @ApiModelProperty(name = "开始查询位置", notes = "默认0")
+    @ApiModelProperty(value = "开始查询位置", notes = "默认0")
     private int offset = DEFAULT_OFFSET;
 
     public OffsetPageQuery() {
