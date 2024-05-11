@@ -10,5 +10,5 @@ import lombok.Data;
  * @date 2024/5/1
  */
 @Data
-public class PageQuerySysDeptVO extends PageQuery {
+public class GetSysDeptListQuery extends PageQuery {
 }

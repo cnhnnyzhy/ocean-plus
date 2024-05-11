@@ -11,4 +11,7 @@ public interface WebConstants {
     String ADMIN_API_PREFIX = API_PREFIX + "/admin";
     String BUSINESS_API_PREFIX = API_PREFIX + "/b";
     String CONSUMER_API_PREFIX = API_PREFIX + "/c";
+
+    String COMMON_RESULT_KEY = "common_result";
+
 }

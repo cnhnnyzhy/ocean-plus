@@ -37,6 +37,6 @@ public abstract class OffsetPageQuery extends BasePageQuery {
 
     @Override
     protected <T> Page<T> generatePage() {
-        return new Page<>(getOffset() / getLimit() + 1, getLimit(), isNeedTotalCount());
+        return new Page<>(getOffset() / getLimit() + 1, getLimit(), isNeedTotal());
     }
 }

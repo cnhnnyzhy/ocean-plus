@@ -23,7 +23,7 @@ public abstract class PageQuery extends BasePageQuery {
 
     @Override
     protected <T> Page<T> generatePage() {
-        return new Page<>(getPageNo(), getPageSize(), isNeedTotalCount());
+        return new Page<>(getPageNo(), getPageSize(), isNeedTotal());
     }
 
     public int getPageNo() {

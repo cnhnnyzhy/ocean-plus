@@ -47,3 +47,17 @@ logging:
     com.baomidou.dynamic: debug
 knife4j:
   enable: true
+
+# 项目自定义配置
+ocean:
+  web:
+    apiPrefix: /api
+    controllerPackage: com.ocean
+  log:
+    trace:
+      enabled: true
+    req:
+      enable: true
+      rsp:
+        enabled: true
+        log-type: simple

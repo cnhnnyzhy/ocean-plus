@@ -5,6 +5,6 @@ package com.ocean.framework.core.dto;
  * @Author: yang.zhang
  * @Date: 2022/4/19 19:50
  */
-public abstract class Command extends VO {
+public abstract class Command extends DTO {
     private static final long serialVersionUID = 1L;
 }

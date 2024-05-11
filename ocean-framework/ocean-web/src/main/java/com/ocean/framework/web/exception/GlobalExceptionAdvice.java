@@ -1,6 +1,8 @@
-package com.ocean.framework.core.exception;
+package com.ocean.framework.web.exception;
 
 import com.ocean.framework.core.dto.Result;
+import com.ocean.framework.core.exception.BizException;
+import com.ocean.framework.core.exception.GlobalErrorCode;
 import com.ocean.framework.core.util.StringUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.validator.internal.engine.path.PathImpl;

@@ -38,4 +38,15 @@ public class StringUtils {
     public static String toUnderlineCase(CharSequence str) {
         return StrUtil.toUnderlineCase(str);
     }
+
+    /**
+     * 是否以指定字符串开头，忽略大小写
+     *
+     * @param str    被监测字符串
+     * @param prefix 开头字符串
+     * @return 是否以指定字符串开头
+     */
+    public static boolean startWithIgnoreCase(CharSequence str, CharSequence prefix) {
+        return StrUtil.startWithIgnoreCase(str, prefix);
+    }
 }

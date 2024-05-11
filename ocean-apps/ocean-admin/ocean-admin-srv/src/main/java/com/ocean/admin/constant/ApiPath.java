@@ -7,5 +7,5 @@ package com.ocean.admin.constant;
  * @date 2024/4/24
  */
 public interface ApiPath {
-    String ADMIN_GET_DEPT_LIST = "/system/dept/get-list";
+    String ADMIN_DEPT_LIST = "/system/dept/list";
 }
