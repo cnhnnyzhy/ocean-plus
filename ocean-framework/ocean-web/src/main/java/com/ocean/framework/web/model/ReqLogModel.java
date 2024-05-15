@@ -46,9 +46,8 @@ public class ReqLogModel implements Serializable {
     /**
      * 操作结束时间
      */
-    private Date ends;
+    private Date end;
 
 
     private Integer duration;
-
 }

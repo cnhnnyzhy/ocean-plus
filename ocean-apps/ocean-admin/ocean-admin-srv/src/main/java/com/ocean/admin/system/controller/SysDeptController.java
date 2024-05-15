@@ -35,6 +35,8 @@ public class SysDeptController extends BaseAdminController {
     @PostMapping(ADMIN_DEPT_LIST)
     public Result<PageVO<SysDeptVO>> getSysDeptList(@RequestBody GetSysDeptListQuery getSysDeptListQuery) {
         getSysDeptListQuery.buildPage();
+        if (true)
+            throw new RuntimeException("error");
         return Result.success(new PageVO<>());
     }
 }

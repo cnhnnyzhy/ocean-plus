@@ -28,7 +28,7 @@ public class GlobalResponseBodyHandler implements ResponseBodyAdvice {
 
 
     @Resource
-    private ReqLogProperties logProperties;
+    private ReqLogProperties reqLogProperties;
 
 
     @Override
@@ -45,7 +45,7 @@ public class GlobalResponseBodyHandler implements ResponseBodyAdvice {
     @SuppressWarnings("NullableProblems") // 避免 IDEA 警告
     public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType, Class selectedConverterType,
                                   ServerHttpRequest request, ServerHttpResponse response) {
-        Optional.ofNullable(logProperties.getRsp()).ifPresent(rsp -> {
+        Optional.ofNullable(reqLogProperties.getRsp()).ifPresent(rsp -> {
             if (rsp.getEnabled()) {
                 // 记录 Controller 结果
                 WebUtils.setResult(((ServletServerHttpRequest) request).getServletRequest(), body);

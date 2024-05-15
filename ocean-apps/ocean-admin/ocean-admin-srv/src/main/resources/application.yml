@@ -57,7 +57,7 @@ ocean:
     trace:
       enabled: true
     req:
-      enable: true
+      enabled: true
       rsp:
         enabled: true
         log-type: simple

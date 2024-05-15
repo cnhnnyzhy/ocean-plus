@@ -2,12 +2,10 @@ package com.ocean.framework.web.filter;
 
 import com.ocean.framework.web.properties.TraceProperties;
 import com.ocean.framework.web.util.MDCTraceUtils;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
-import org.springframework.core.annotation.Order;
+import lombok.AllArgsConstructor;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import javax.annotation.Resource;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -26,10 +24,9 @@ import java.util.List;
  * Blog: https://zlt2000.gitee.io
  * Github: https://github.com/zlt2000
  */
-@ConditionalOnClass(value = {HttpServletRequest.class, OncePerRequestFilter.class})
-@Order(value = MDCTraceUtils.FILTER_ORDER)
+@AllArgsConstructor
 public class WebTraceFilter extends OncePerRequestFilter {
-    @Resource
+
     private TraceProperties traceProperties;
 
     @Override
