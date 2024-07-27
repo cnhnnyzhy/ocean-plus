@@ -48,6 +48,13 @@ public class ReqLogModel implements Serializable {
      */
     private Date end;
 
-
+    /**
+     * 操作耗时
+     */
     private Integer duration;
+
+    /**
+     * 异常栈信息
+     */
+    private String exceptionStackTrace;
 }

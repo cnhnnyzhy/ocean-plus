@@ -104,7 +104,7 @@ public class GlobalExceptionAdvice {
     public Result<?> bizException(BizException e) {
         if (Objects.isNull(e.getCode()) || e.getCode() != GlobalErrorCode.PARAMS_ERROR.getCode()) {
             if (StringUtils.isNotBlank(e.getData())) {
-                log.error(EXCEPTION_PREFIX + " data=" + e.getData(), e);
+                log.error(EXCEPTION_PREFIX + " data={}", e.getData(), e);
             } else {
                 log.error(EXCEPTION_PREFIX, e);
             }

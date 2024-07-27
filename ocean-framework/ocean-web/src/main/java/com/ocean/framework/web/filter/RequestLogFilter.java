@@ -20,6 +20,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.*;
 
 /**
@@ -70,11 +72,16 @@ public class RequestLogFilter extends OncePerRequestFilter {
             log(accessLog, request);
         } catch (Exception ex) {
             // 异常执行，记录日志
+            log(accessLog, request, ex);
             throw ex;
         }
     }
 
     private void log(AccessLogModel accessLog, HttpServletRequest request) {
+        log(accessLog, request, null);
+    }
+
+    private void log(AccessLogModel accessLog, HttpServletRequest request, Throwable e) {
         if (Objects.isNull(accessLog)) {
             return;
         }
@@ -94,13 +101,27 @@ public class RequestLogFilter extends OncePerRequestFilter {
                             ret.setData(null);
                             accessLog.setResult(ret);
                         } catch (Exception ex) {
-                            log.error("API response data is not json:[{}]", result);
+                            ex.printStackTrace();
+                            log.error("API response data is not json:[{}]", result, ex);
                         }
                     }
                 });
             });
         });
+        if (e != null) {
+            accessLog.setExceptionStackTrace(getExceptionStackTrace(e));
+        }
         log.info("API access log:[{}]", JacksonUtils.toJsonStr(accessLog));
+    }
+
+    private String getExceptionStackTrace(Throwable ex) {
+        if (ex != null) {
+            StringWriter sw = new StringWriter();
+            PrintWriter pw = new PrintWriter(sw);
+            ex.printStackTrace(pw);
+            return sw.toString();
+        }
+        return null;
     }
 
     private void computeDuration(AccessLogModel accessLog) {
