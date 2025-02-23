@@ -23,13 +23,13 @@ public class Result<T> implements Serializable {
      *
      * @see ErrorCode#getCode()
      */
-    private Integer code;
+    private String code;
     /**
      * 错误提示，用户可阅读
      *
-     * @see ErrorCode#getMsg()
+     * @see ErrorCode#getMessage()
      */
-    private String msg;
+    private String message;
 
     @JsonProperty("trace_id")
     private String traceId = MDC.get("traceId");
@@ -48,47 +48,47 @@ public class Result<T> implements Serializable {
      * @return 新的 RspResult 对象
      */
     public static <T> Result<T> error(Result<?> result) {
-        return error(result.getCode(), result.getMsg());
+        return error(result.getCode(), result.getMessage());
     }
 
-    public static <T> Result<T> error(String msg) {
+    public static <T> Result<T> error(String message) {
         Result<T> result = new Result<>();
         result.code = GlobalErrorCode.FAILED.getCode();
-        result.msg = msg;
+        result.message = message;
         return result;
     }
 
-    public static <T> Result<T> error(Integer code, String msg) {
+    public static <T> Result<T> error(String code, String message) {
         if (GlobalErrorCode.SUCCESS.getCode().equals(code)) {
             throw new IllegalArgumentException("code 必须是错误的！");
         }
         Result<T> result = new Result<>();
         result.code = code;
-        result.msg = msg;
+        result.message = message;
         return result;
     }
 
     public static <T> Result<T> error(ErrorCode code) {
-        return error(code.getCode(), code.getMsg());
+        return error(code.getCode(), code.getMessage());
     }
 
     public static <T> Result<T> success(T data) {
         Result<T> result = new Result<>();
         result.code = GlobalErrorCode.SUCCESS.getCode();
-        result.msg = "success";
+        result.message = "success";
         result.data = data;
         return result;
     }
 
-    public static <T> Result<T> of(Integer code, String msg, T data) {
+    public static <T> Result<T> of(String code, String message, T data) {
         Result<T> result = new Result<>();
         result.code = code;
-        result.msg = msg;
+        result.message = message;
         result.data = data;
         return result;
     }
 
-    public static boolean isSuccess(Integer code) {
+    public static boolean isSuccess(String code) {
         return Objects.equals(code, GlobalErrorCode.SUCCESS.getCode());
     }
 
@@ -112,7 +112,7 @@ public class Result<T> implements Serializable {
             return;
         }
         // 业务异常
-        throw new BizException(code, msg);
+        throw new BizException(code, message);
     }
 
     public static <T> Result<T> error(BizException exception) {

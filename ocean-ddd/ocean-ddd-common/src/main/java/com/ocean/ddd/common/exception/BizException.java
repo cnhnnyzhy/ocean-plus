@@ -15,7 +15,7 @@ public final class BizException extends RuntimeException {
      *
      * @see ErrorCode
      */
-    private Integer code;
+    private String code;
     /**
      * 错误提示
      */
@@ -34,27 +34,27 @@ public final class BizException extends RuntimeException {
 
     public BizException(ErrorCode errorCode) {
         this.code = errorCode.getCode();
-        this.message = errorCode.getMsg();
+        this.message = errorCode.getMessage();
         this.data = null;
     }
 
-    public BizException(Integer code, String message) {
+    public BizException(String code, String message) {
         this.code = code;
         this.message = message;
         this.data = null;
     }
 
-    public BizException(Integer code, String message, Object data) {
+    public BizException(String code, String message, Object data) {
         this.code = code;
         this.message = message;
         this.data = data;
     }
 
-    public Integer getCode() {
+    public String getCode() {
         return code;
     }
 
-    public BizException setCode(Integer code) {
+    public BizException setCode(String code) {
         this.code = code;
         return this;
     }
