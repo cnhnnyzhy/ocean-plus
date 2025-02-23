@@ -26,4 +26,11 @@ public class ErrorCode {
     public static ErrorCode of(String code, String message) {
         return new ErrorCode(code, message);
     }
+
+    public static ErrorCode of(String moduleCode, String code, String message) {
+        if (moduleCode != null && !moduleCode.isEmpty()) {
+            return new ErrorCode(moduleCode + "-" + code, message);
+        }
+        return new ErrorCode(code, message);
+    }
 }
