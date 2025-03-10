@@ -1,21 +1,17 @@
 package com.ocean.framework.core.exception;
 
 /**
- * @Description: 全局的错误码
+ * @Description: 全局错误码
  * @Author: yang.zhang
- * @Date: 2022/10/4 21:43
+ * @Date: 2022/7/12 16:10
  */
 public interface GlobalErrorCode {
-    ErrorCode SUCCESS = new ErrorCode(200, "成功");
-    ErrorCode FAILED = new ErrorCode(500, "失败");
-
-    ErrorCode BAD_REQUEST = new ErrorCode(400, "请求不正确");
-    ErrorCode UNAUTHORIZED = new ErrorCode(401, "账号未登录");
-    ErrorCode FORBIDDEN = new ErrorCode(403, "没有该操作权限");
-    ErrorCode NOT_FOUND = new ErrorCode(404, "请求未找到");
-    ErrorCode METHOD_NOT_ALLOWED = new ErrorCode(405, "请求方法不正确");
-
-    ErrorCode PARAMS_ERROR = new ErrorCode(600, "参数错误");
-    
+    ErrorCode SUCCESS = ErrorCode.of("200", "成功");
+    ErrorCode FAILED = ErrorCode.of("500", "失败");
+    ErrorCode PARAM_ERROR = ErrorCode.of("600", "参数错误");
+    ErrorCode REMOTE_CALL_ERROR = ErrorCode.of("700", "远程调用错误");
+    ErrorCode DB_ERROR = ErrorCode.of("800", "数据库错误");
+    ErrorCode NO_LOGIN = ErrorCode.of("900", "未登录");
+    ErrorCode NO_PERMISSION = ErrorCode.of("901", "无权限");
 
 }

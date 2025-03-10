@@ -1,6 +1,6 @@
 package com.ocean.ddd.module.domain.valueobject;
 
-import com.ocean.ddd.common.exception.Exceptions;
+import com.ocean.framework.core.exception.Exceptions;
 import lombok.Getter;
 import org.apache.commons.lang3.StringUtils;
 

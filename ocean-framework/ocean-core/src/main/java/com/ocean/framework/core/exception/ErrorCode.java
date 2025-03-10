@@ -5,15 +5,32 @@ import lombok.Getter;
 /**
  * @Description: 错误码对象
  * @Author: yang.zhang
- * @Date: 2022/10/4 21:39
+ * @Date: 2022/7/12 16:02
  */
 @Getter
 public class ErrorCode {
-    private Integer code;
-    private String msg;
+    /**
+     * 错误码
+     */
+    private final String code;
+    /**
+     * 错误提示
+     */
+    private final String message;
 
-    public ErrorCode(Integer code, String msg) {
+    public ErrorCode(String code, String message) {
         this.code = code;
-        this.msg = msg;
+        this.message = message;
+    }
+
+    public static ErrorCode of(String code, String message) {
+        return new ErrorCode(code, message);
+    }
+
+    public static ErrorCode of(String moduleCode, String code, String message) {
+        if (moduleCode != null && !moduleCode.isEmpty()) {
+            return new ErrorCode(moduleCode + "-" + code, message);
+        }
+        return new ErrorCode(code, message);
     }
 }

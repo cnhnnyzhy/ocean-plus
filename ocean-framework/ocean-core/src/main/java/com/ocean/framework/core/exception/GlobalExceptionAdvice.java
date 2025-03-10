@@ -1,6 +1,6 @@
-package com.ocean.ddd.common.exception;
+package com.ocean.framework.core.exception;
 
-import com.ocean.ddd.common.Result;
+import com.ocean.framework.core.dto.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;

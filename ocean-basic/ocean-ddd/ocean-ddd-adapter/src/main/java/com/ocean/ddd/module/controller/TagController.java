@@ -1,10 +1,10 @@
 package com.ocean.ddd.module.controller;
 
-import com.ocean.ddd.common.Result;
 import com.ocean.ddd.dto.req.cmd.TagAddCmd;
 import com.ocean.ddd.dto.req.qry.TagGetListQry;
 import com.ocean.ddd.dto.rsp.TagRsp;
 import com.ocean.ddd.service.TagService;
+import com.ocean.framework.core.dto.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

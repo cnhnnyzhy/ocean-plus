@@ -10,12 +10,11 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * 当发生错误或异常时的对象体 提供基础错误返回对象支持
- *
- * @author ocean
+ * @Description: 当发生错误或异常时的对象体 提供基础错误返回对象支持
+ * @Author: yang.zhang
+ * @Date: 2022/7/12 16:35
  */
 public class ErrorBody {
-
     /**
      * 异常类名
      */
@@ -118,5 +117,4 @@ public class ErrorBody {
             return "collectStackTrace exception : " + ex.getMessage();
         }
     }
-
 }

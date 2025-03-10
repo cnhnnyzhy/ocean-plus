@@ -12,6 +12,10 @@
     <artifactId>ocean-ddd-common</artifactId>
     <dependencies>
         <dependency>
+            <groupId>com.ocean</groupId>
+            <artifactId>ocean-core</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>provided</scope>

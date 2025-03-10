@@ -1,75 +1,122 @@
 package com.ocean.framework.core.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.ocean.framework.core.exception.BizException;
 import com.ocean.framework.core.exception.ErrorCode;
-import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
-import lombok.experimental.Accessors;
+import com.ocean.framework.core.exception.GlobalErrorCode;
+import lombok.Getter;
 import org.slf4j.MDC;
 
 import java.io.Serializable;
-
-import static com.ocean.framework.core.exception.GlobalErrorCode.SUCCESS;
+import java.util.Objects;
 
 /**
- * @Description: 接口响应结果
+ * @Description: 接口统一响应结果
  * @Author: yang.zhang
- * @Date: 2022/10/4 21:35
+ * @Date: 2022/7/12 15:38
  */
-@Data
-@Accessors(chain = true)
+@Getter
 public class Result<T> implements Serializable {
+    private static final long serialVersionUID = 1475147362408907882L;
     /**
-     * 是否成功
+     * 错误码
+     *
+     * @see ErrorCode#getCode()
      */
-    @ApiModelProperty(value = "接口调用是否成功：true|false")
-    private boolean success;
+    private String code;
     /**
-     * 响应码
+     * 错误提示，用户可阅读
+     *
+     * @see ErrorCode#getMessage()
      */
-    @ApiModelProperty(value = "接口响应码")
-    private Integer code;
-    /**
-     * 响应信息
-     */
-    @ApiModelProperty(value = "接口响应信息")
-    private String msg;
-    /**
-     * 响应数据
-     */
-    @ApiModelProperty(value = "接口响应数据")
-    private T data;
-    /**
-     * 调用链路trace_id
-     */
-    @ApiModelProperty(value = "接口调用TraceId")
-    private String traceId = MDC.get("traceId");
+    private String message;
 
-    public static <T> Result<T> success() {
-        return success(null);
+    @JsonProperty("trace_id")
+    private String traceId = MDC.get("traceId");
+    /**
+     * 返回数据
+     */
+    private T data;
+
+    /**
+     * 将传入的 result 对象，转换成另外一个泛型结果的对象
+     * <p>
+     * 因为 A 方法返回的 RspResult 对象，不满足调用其的 B 方法的返回，所以需要进行转换。
+     *
+     * @param result 传入的 result 对象
+     * @param <T>    返回的泛型
+     * @return 新的 RspResult 对象
+     */
+    public static <T> Result<T> error(Result<?> result) {
+        return error(result.getCode(), result.getMessage());
+    }
+
+    public static <T> Result<T> error(String message) {
+        Result<T> result = new Result<>();
+        result.code = GlobalErrorCode.FAILED.getCode();
+        result.message = message;
+        return result;
+    }
+
+    public static <T> Result<T> error(String code, String message) {
+        if (GlobalErrorCode.SUCCESS.getCode().equals(code)) {
+            throw new IllegalArgumentException("code 必须是错误的！");
+        }
+        Result<T> result = new Result<>();
+        result.code = code;
+        result.message = message;
+        return result;
+    }
+
+    public static <T> Result<T> error(ErrorCode code) {
+        return error(code.getCode(), code.getMessage());
     }
 
     public static <T> Result<T> success(T data) {
         Result<T> result = new Result<>();
-        result.setSuccess(true);
-        result.setCode(SUCCESS.getCode());
-        result.setMsg(SUCCESS.getMsg());
-        result.setData(data);
+        result.code = GlobalErrorCode.SUCCESS.getCode();
+        result.message = "success";
+        result.data = data;
         return result;
     }
 
-    public static <T> Result<T> error(Integer code, String msg) {
+    public static <T> Result<T> of(String code, String message, T data) {
         Result<T> result = new Result<>();
-        result.setSuccess(SUCCESS.getCode().equals(code) ? true : false);
-        result.setCode(code);
-        result.setMsg(msg);
+        result.code = code;
+        result.message = message;
+        result.data = data;
         return result;
     }
 
-    public static <T> Result<T> error(ErrorCode errorCode) {
-        return error(errorCode.getCode(), errorCode.getMsg());
+    public static boolean isSuccess(String code) {
+        return Objects.equals(code, GlobalErrorCode.SUCCESS.getCode());
     }
 
-    public static <T> Result<T> error(ErrorCode errorCode, String msg) {
-        return error(errorCode.getCode(), msg);
+    @JsonIgnore
+    public boolean isSuccess() {
+        return isSuccess(code);
+    }
+
+    @JsonIgnore
+    public boolean isError() {
+        return !isSuccess();
+    }
+
+    // ========= 和 Exception 异常体系集成 =========
+
+    /**
+     * 判断是否有异常。如果有，则抛出 {@link BizException} 异常
+     */
+    public void checkError() throws BizException {
+        if (isSuccess()) {
+            return;
+        }
+        // 业务异常
+        throw new BizException(code, message);
+    }
+
+    public static <T> Result<T> error(BizException exception) {
+        return error(exception.getCode(), exception.getMessage());
     }
 }

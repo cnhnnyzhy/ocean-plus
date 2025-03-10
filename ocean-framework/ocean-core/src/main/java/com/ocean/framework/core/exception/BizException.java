@@ -1,57 +1,80 @@
 package com.ocean.framework.core.exception;
 
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
 
 /**
  * @Description: 业务异常
  * @Author: yang.zhang
- * @Date: 2022/10/4 22:00
+ * @Date: 2022/7/12 16:18
  */
-@Getter
 @EqualsAndHashCode(callSuper = true)
 public class BizException extends RuntimeException {
+
+    private static final long serialVersionUID = -4398654874082205315L;
     /**
-     * 错误码
+     * 业务错误码
+     *
+     * @see ErrorCode
      */
-    private Integer code;
+    private String code;
     /**
-     * 错误信息
+     * 错误提示
      */
     private String message;
+
     /**
-     * 异常出现时的关键数据
+     * 有时候返回特定的Code码, 同时需要给出一个返回值, 方便前段 信息格式化
      */
-    private String data;
+    private Object data;
 
+    /**
+     * 空构造方法，避免反序列化问题
+     */
+    public BizException() {
+    }
 
-    public BizException(Integer code, String message, String data) {
+    public BizException(ErrorCode errorCode) {
+        this.code = errorCode.getCode();
+        this.message = errorCode.getMessage();
+        this.data = null;
+    }
+
+    public BizException(String code, String message) {
+        this.code = code;
+        this.message = message;
+        this.data = null;
+    }
+
+    public BizException(String code, String message, Object data) {
         this.code = code;
         this.message = message;
         this.data = data;
     }
 
-    public BizException(Integer code, String message) {
-        this(code, message, "");
+    public String getCode() {
+        return code;
     }
 
-
-    public BizException(ErrorCode errorCode) {
-        this(errorCode.getCode(), errorCode.getMsg());
-    }
-
-
-    public BizException(ErrorCode errorCode, String message) {
-        this(errorCode.getCode(), (message != null && !"".equals(message)) ? message : errorCode.getMsg());
-    }
-
-    public BizException(ErrorCode errorCode, String message, String data) {
-        this(errorCode.getCode(), (message != null && !"".equals(message)) ? message : errorCode.getMsg(), data);
-    }
-
-    public BizException(Integer code, String message, Throwable cause) {
-        super(message, cause);
+    public BizException setCode(String code) {
         this.code = code;
+        return this;
+    }
+
+    @Override
+    public String getMessage() {
+        return message;
+    }
+
+    public BizException setMessage(String message) {
         this.message = message;
+        return this;
+    }
+
+    public Object getData() {
+        return data;
+    }
+
+    public void setData(Object data) {
+        this.data = data;
     }
 }

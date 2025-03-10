@@ -1,4 +1,4 @@
-package com.ocean.ddd.common.exception;
+package com.ocean.framework.core.exception;
 
 /**
  * @Description: 业务错误码
