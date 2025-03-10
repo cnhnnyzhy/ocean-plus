@@ -101,8 +101,7 @@ public class RequestLogFilter extends OncePerRequestFilter {
                             ret.setData(null);
                             accessLog.setResult(ret);
                         } catch (Exception ex) {
-                            ex.printStackTrace();
-                            log.error("API response data is not json:[{}]", result, ex);
+                            log.error("API response data is not json:[" + result + "]", ex);
                         }
                     }
                 });

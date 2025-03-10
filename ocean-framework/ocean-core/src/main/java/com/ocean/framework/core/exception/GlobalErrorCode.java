@@ -8,6 +8,7 @@ package com.ocean.framework.core.exception;
 public interface GlobalErrorCode {
     ErrorCode SUCCESS = ErrorCode.of("200", "成功");
     ErrorCode FAILED = ErrorCode.of("500", "失败");
+    ErrorCode UNAUTHORIZED = ErrorCode.of("400", "未授权");
     ErrorCode PARAM_ERROR = ErrorCode.of("600", "参数错误");
     ErrorCode REMOTE_CALL_ERROR = ErrorCode.of("700", "远程调用错误");
     ErrorCode DB_ERROR = ErrorCode.of("800", "数据库错误");

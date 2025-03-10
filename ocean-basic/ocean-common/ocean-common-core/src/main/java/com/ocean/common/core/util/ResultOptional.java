@@ -23,7 +23,7 @@ public class ResultOptional<T> {
         return new ResultOptional<>(Objects.requireNonNull(original));
     }
 
-    public Integer getCode() {
+    public String getCode() {
         return original.getCode();
     }
 

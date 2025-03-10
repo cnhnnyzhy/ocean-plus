@@ -6,6 +6,7 @@ import com.ocean.framework.core.exception.BizException;
 import com.ocean.framework.core.exception.ErrorCode;
 import com.ocean.framework.core.exception.GlobalErrorCode;
 import lombok.Getter;
+import lombok.Setter;
 import org.slf4j.MDC;
 
 import java.io.Serializable;
@@ -24,12 +25,14 @@ public class Result<T> implements Serializable {
      *
      * @see ErrorCode#getCode()
      */
+    @Setter
     private String code;
     /**
      * 错误提示，用户可阅读
      *
      * @see ErrorCode#getMessage()
      */
+    @Setter
     private String message;
 
     @JsonProperty("trace_id")
@@ -37,6 +40,7 @@ public class Result<T> implements Serializable {
     /**
      * 返回数据
      */
+    @Setter
     private T data;
 
     /**

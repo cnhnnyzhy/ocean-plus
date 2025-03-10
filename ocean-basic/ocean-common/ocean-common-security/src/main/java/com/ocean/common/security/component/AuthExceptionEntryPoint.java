@@ -43,24 +43,24 @@ public class AuthExceptionEntryPoint implements AuthenticationEntryPoint {
 
         Result<String> result = new Result<>();
         result.setCode(GlobalErrorCode.UNAUTHORIZED.getCode());
-        result.setMsg(authException.getMessage());
+        result.setMessage(authException.getMessage());
         result.setData(authException.getMessage());
 
         if (authException instanceof CredentialsExpiredException) {
-            result.setMsg(SecurityMessageSourceUtils.getAccessor().getMessage("AbstractUserDetailsAuthenticationProvider.credentialsExpired", authException.getMessage()));
+            result.setMessage(SecurityMessageSourceUtils.getAccessor().getMessage("AbstractUserDetailsAuthenticationProvider.credentialsExpired", authException.getMessage()));
         }
         if (authException instanceof UsernameNotFoundException) {
-            result.setMsg(SecurityMessageSourceUtils.getAccessor().getMessage("AbstractUserDetailsAuthenticationProvider.noopBindAccount", authException.getMessage()));
+            result.setMessage(SecurityMessageSourceUtils.getAccessor().getMessage("AbstractUserDetailsAuthenticationProvider.noopBindAccount", authException.getMessage()));
         }
         if (authException instanceof BadCredentialsException) {
-            result.setMsg(SecurityMessageSourceUtils.getAccessor().getMessage("AbstractUserDetailsAuthenticationProvider.badClientCredentials", authException.getMessage()));
+            result.setMessage(SecurityMessageSourceUtils.getAccessor().getMessage("AbstractUserDetailsAuthenticationProvider.badClientCredentials", authException.getMessage()));
         }
         if (authException instanceof InsufficientAuthenticationException) {
             response.setStatus(HttpStatus.FAILED_DEPENDENCY.value());
-            result.setMsg(SecurityMessageSourceUtils.getAccessor().getMessage("AbstractAccessDecisionManager.expireToken", authException.getMessage()));
+            result.setMessage(SecurityMessageSourceUtils.getAccessor().getMessage("AbstractAccessDecisionManager.expireToken", authException.getMessage()));
         }
         if (authException instanceof UsernameNotFoundException) {
-            result.setMsg(SecurityMessageSourceUtils.getAccessor().getMessage("AbstractUserDetailsAuthenticationProvider.noopBindAccount", authException.getMessage()));
+            result.setMessage(SecurityMessageSourceUtils.getAccessor().getMessage("AbstractUserDetailsAuthenticationProvider.noopBindAccount", authException.getMessage()));
         }
 
         PrintWriter printWriter = response.getWriter();
