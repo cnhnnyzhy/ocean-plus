@@ -13,11 +13,11 @@ public interface BizErrorCode extends GlobalErrorCode {
     /**
      * token为空
      */
-    ErrorCode TOKEN_IS_NULL = new ErrorCode(700001, "Token为空");
+    ErrorCode TOKEN_IS_NULL = new ErrorCode("700001", "Token为空");
     /**
      * AccessToken为空
      */
-    ErrorCode ACCESS_TOKEN_IS_NULL = new ErrorCode(700002, "AccessToken为空");
+    ErrorCode ACCESS_TOKEN_IS_NULL = new ErrorCode("700002", "AccessToken为空");
 
 
 }

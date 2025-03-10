@@ -46,7 +46,7 @@ public class SysTenantController {
     public Result add(@Validated @RequestBody TenantAddCommand req) {
         sysTenantService.add(req);
         sysTenantService.add2(req);
-        return Result.success();
+        return Result.success(true);
     }
 
 }

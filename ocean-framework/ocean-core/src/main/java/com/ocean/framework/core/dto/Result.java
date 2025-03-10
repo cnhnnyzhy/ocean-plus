@@ -10,6 +10,8 @@ import lombok.Setter;
 import org.slf4j.MDC;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -83,6 +85,12 @@ public class Result<T> implements Serializable {
         result.message = "success";
         result.data = data;
         return result;
+    }
+
+    public static Result<Map<String, Object>> success(String key, Object value) {
+        Map<String, Object> data = new HashMap<>(1);
+        data.put(key, value);
+        return success(data);
     }
 
     public static <T> Result<T> of(String code, String message, T data) {
