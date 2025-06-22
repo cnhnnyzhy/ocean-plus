@@ -5,7 +5,7 @@ import com.ocean.ddd.dto.req.qry.TagGetListQry;
 import com.ocean.ddd.dto.rsp.TagRsp;
 import com.ocean.ddd.service.TagService;
 import com.ocean.framework.core.dto.Result;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,11 +20,12 @@ import java.util.Optional;
  * @Author: yang.zhang
  * @Date: 2022/7/12 15:30
  */
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/tag")
 public class TagController {
-    @Autowired
-    private TagService tagService;
+    
+    private final TagService tagService;
 
     @PostMapping("add")
     public Result<TagRsp> add(@Valid @RequestBody TagAddCmd req) {
